@@ -1,0 +1,33 @@
+#confirmComp{
+    position: fixed;
+    display: flex;
+    left: 30%;
+    right: 30%;
+    top: 25%;
+    width: 20%;
+    background-color: rgba(68, 54, 197, 0.8);
+    /* border-radius: 1rem; */
+}
+#confirmComp>div{
+    margin: 0 auto;
+    text-align: center;
+    text-shadow: none;
+    color: black;
+    font-weight: bold;
+    padding: 2rem;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+    #confirmComp{
+        position: fixed;
+        left: 10%;
+        width: 80%;
+        right: 10%;
+        top:90%;
+        border-radius: 1rem;
+        background-color: rgba(255, 255, 255, 0.8)
+    }
+    #confirmComp>div{
+      
+        padding: 0rem;
+    }
+  }

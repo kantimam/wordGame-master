@@ -1,0 +1,18 @@
+#progressBarCont{
+    margin: 1rem auto 0 auto;
+    width: 100%;
+}
+#progressBarCont>#progressWrap{
+    position: relative;
+    background-color: blue;
+    border-radius: 0.2rem;
+    overflow: hidden;
+    width: 90%;
+    margin: 0 auto;
+    height: 0.4rem;
+}
+#progressBarCont>#progressWrap>div{
+    position: absolute;
+    height: 2rem;
+    background-color: orange;
+}
