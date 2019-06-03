@@ -9,7 +9,7 @@ export default class componentName extends Component {
       this.state = {
          number: "",
          showNum: 0,
-         numberEntered: "2"
+         numberEntered: ""
       }
     }
 
@@ -20,7 +20,7 @@ export default class componentName extends Component {
     console.log('did submit')
     if(!this.state.showNum){
         let newNum=lastRound+''+Math.floor(Math.random()*10)
-        this.setState({number:newNum,showNum:1}/* ,()=>this.showNum(822000) */)
+        this.setState({number:newNum,showNum:1,numberEntered:''}/* ,()=>this.showNum(822000) */)
     }
   }
   showNum=(time)=>{
@@ -38,7 +38,7 @@ export default class componentName extends Component {
               time={8}/* time in seconds */>
             </ProgressBar>
         </div>:
-        <form onSubmit={()=>this.startRound(this.state.number)} className={'centerAll'}>
+        <form onSubmit={()=>this.startRound(this.state.number)} className={'marginAuto'}>
           <input 
             value={this.state.numberEntered} 
             onChange={(event)=>this.setState({numberEntered:event.target.value})} 

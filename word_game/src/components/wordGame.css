@@ -184,7 +184,7 @@ h1{
     border:none;
     text-align: center;
     appearance: none;
-    font-size:4rem;
+    font-size:3rem;
     width: 100%;
 }
 #numGameDisp>form>input[type="number"]{
