@@ -1,7 +1,8 @@
 .clickFastComp{
-    background-color: lightslategray;
     min-height: 24rem;
+    cursor: pointer;
+    user-select: none;
 }
 .clickDisplay{
-    
+    height: 100%;
 }

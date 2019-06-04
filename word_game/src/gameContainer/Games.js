@@ -14,8 +14,8 @@ const Games = () => {
                 <Switch>
                     <Route path='/games/wordgame' component={WordGame}/>
                     <Route path='/games/numgame' component={NumGame}/>
-                    <Route path='/games/reactiongame' component={ReactionGame}/>
-                    <Route path='/games/reactionclick' component={ReactionClick}/>
+                    {/* <Route path='/games/reactiongame' component={ReactionGame}/> */}
+                    <Route path='/games/reactiongame' component={ReactionClick}/>
                 </Switch>
                 </main>
                 <div id={'desc'} className={'inner'}>
