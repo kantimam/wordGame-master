@@ -167,26 +167,3 @@ h1{
 }
 
 
-#numGameDisp>div{
-    width: 90%;
-    margin:0 auto;
-    text-align: center;
-}
-#numGameDisp>div>h1{
-    margin: 0;
-    padding: 0;
-    font-size: 4rem
-}
-
-#numGameDisp>form>input{
-    margin: 0 auto;
-    background-color: rgba(0,0,0,0);
-    border:none;
-    text-align: center;
-    appearance: none;
-    font-size:3rem;
-    width: 100%;
-}
-#numGameDisp>form>input[type="number"]{
-    appearance: none;
-}

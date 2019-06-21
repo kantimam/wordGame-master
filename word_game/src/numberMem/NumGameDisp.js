@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import '../components/wordGame.css'
+import './numGame.css'
 import ProgressBar from '../components/ProgressBar.js'
 
 export default class componentName extends Component {
     constructor(props) {
       super(props)
-
+      this.currentRound=1;
       this.state = {
          number: "",
          showNum: 0,
@@ -14,13 +15,18 @@ export default class componentName extends Component {
     }
 
   componentDidMount=()=>{
-    this.startRound("")
+    this.startRound()
   }
-  startRound=(lastRound)=>{
-    console.log('did submit')
+  startRound=()=>{
     if(!this.state.showNum){
-        let newNum=lastRound+''+Math.floor(Math.random()*10)
-        this.setState({number:newNum,showNum:1,numberEntered:''}/* ,()=>this.showNum(822000) */)
+        let numArr=[]
+        for(let i=0;i<this.currentRound;i++){
+          numArr.push(Math.ceil(Math.random()*9))
+
+        }
+        let newNum=numArr.join('');
+        this.setState({number:newNum,showNum:1,numberEntered:''})
+        this.currentRound++
     }
   }
   showNum=(time)=>{
@@ -28,22 +34,24 @@ export default class componentName extends Component {
   }
   render() {
     return (
-      <div id='numGameDisp' className={'displayContainer'}>
+      <div id='numGameDisp'>
         {this.state.showNum?
         <div>
             <h1 className={'wordEnter'}>{this.state.number}</h1>
             <ProgressBar 
               finished={()=>this.setState({showNum:0})} 
               maxWidth={10}/* in rem */ 
-              time={8}/* time in seconds */>
+              time={5}/* time in seconds */>
             </ProgressBar>
         </div>:
         <form onSubmit={()=>this.startRound(this.state.number)} className={'marginAuto'}>
-          <input 
+          <input
+            className={'numInput'} 
             value={this.state.numberEntered} 
             onChange={(event)=>this.setState({numberEntered:event.target.value})} 
             type='number' placeholder='remember the number?'>
           </input>
+          <input id='numSubmit' className={'roundedButton hoverPush'} type='submit' value='SEND'/>
         </form>}
       </div>
     )
