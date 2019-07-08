@@ -5,7 +5,8 @@ export default class ReactionClick extends Component {
     constructor(props) {
         super(props)
         this.colors=["lightblue","green","red"];
-        this.startTime=0;        
+        this.startTime=0;
+        this.timeOutRef=0;        
         this.state = {
             message: 'click when the color changes to green',
             reaction: 0,
@@ -22,7 +23,7 @@ export default class ReactionClick extends Component {
             const minWait=timeRange[0] || 0;
             const maxWait=timeRange[1] || 5;
             const waitTime=(Math.random()*(maxWait-minWait)+minWait)*1000;
-            setTimeout(()=>{
+            this.timeOutRef=setTimeout(()=>{
             if(this.state.reaction===0){
                 this.setState({
                     reaction: 1
@@ -34,6 +35,9 @@ export default class ReactionClick extends Component {
     componentDidMount(){
         // change color in 2-6 seconds
         this.changeColor([2,6])
+    }
+    componentWillUnmount(){
+        clearTimeout(this.timeOutRef)
     }
     checkReaction=()=>{
         if(!this.state.resetWait){

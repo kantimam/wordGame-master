@@ -10,14 +10,18 @@ export default class ProgressBar extends Component {
     }
   }
   componentDidMount(){
-    this.progressInterval=setInterval(()=>this.setState({progress: this.state.progress+0.1}),this.props.time)
+    this.progressInterval=setInterval(this.updateProgress,this.props.time)
+  }
+  updateProgress=()=>{
+    this.setState({progress: this.state.progress+0.1},
+      ()=>{if(this.state.progress>100){
+        clearInterval(this.progressInterval)
+        this.props.finished()
+      }})
   }
   
   render() {
-    if(this.state.progress>100){
-      clearInterval(this.progressInterval)
-      this.props.finished()
-    }
+
     return (
       <div style={{maxWidth:this.props.maxWidth+'rem'}} id='progressBarCont'>
       <div id='progressWrap'>
