@@ -10,7 +10,8 @@ export default class componentName extends Component {
       this.state = {
          number: "",
          showNum: 0,
-         numberEntered: ""
+         numberEntered: "",
+         lifes: 5
       }
     }
 
@@ -32,9 +33,28 @@ export default class componentName extends Component {
   showNum=(time)=>{
     setTimeout(()=>this.setState({showNum:0}),time)
   }
+  displayLifes=()=>{
+    let lifesArray=[]
+    for(let i=0;i<this.state.lifes;i++){
+      lifesArray.push(<i key={`life${i}`} className="fas fa-heart marginRight"/>)
+    }
+    return lifesArray
+  }
+
+
   render() {
+    if(this.state.lifes<1){
+      return (
+        <div id='numGameDisp'>
+
+        </div>
+      )
+    }
     return (
       <div id='numGameDisp'>
+        <div className='wordGameUi'>
+          {this.displayLifes()}
+        </div>
         {this.state.showNum?
         <div>
             <h1 className={'wordEnter'}>{this.state.number}</h1>
@@ -49,7 +69,8 @@ export default class componentName extends Component {
             className={'numInput'} 
             value={this.state.numberEntered} 
             onChange={(event)=>this.setState({numberEntered:event.target.value})} 
-            type='number' placeholder='remember the number?'>
+            type='number' 
+            placeholder='remember the number?'>
           </input>
           <input id='numSubmit' className={'roundedButton hoverPush'} type='submit' value='SEND'/>
         </form>}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import axios from 'axios';
 import NumGameDisp from './NumGameDisp'
-const wordArray=["hello","black","white","nazi","fun","friendship","hell"]
+import './numGame.css'
 
 export default class componentName extends Component {
     constructor(props) {
@@ -19,7 +18,7 @@ export default class componentName extends Component {
 
   render() {
     return (
-      <div className={'fullContainer gradientBackground noUserSelect'}>
+      <div className={'fullContainer gradientBackground noUserSelect moreHeight'}>
         {this.state.running&&<NumGameDisp></NumGameDisp>}
       </div>
     )
