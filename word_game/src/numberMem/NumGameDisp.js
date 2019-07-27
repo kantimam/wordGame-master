@@ -11,7 +11,8 @@ export default class componentName extends Component {
          number: "",
          showNum: 0,
          numberEntered: "",
-         lifes: 5
+         lifes: 1,
+         score: 0
       }
     }
 
@@ -30,8 +31,35 @@ export default class componentName extends Component {
         this.currentRound++
     }
   }
+
+  resetGame=()=>{
+    this.currentRound=1;
+    this.setState({
+      number: "",
+      showNum: 0,
+      numberEntered: "",
+      lifes: 5
+    })
+  }
+
   showNum=(time)=>{
     setTimeout(()=>this.setState({showNum:0}),time)
+  }
+
+  enterNumber=(event)=>{
+    event.preventDefault();
+    if(this.state.numberEntered!==this.state.number){
+      this.setState({
+        lifes: this.state.lifes-1,
+        showNum: 0
+      })
+    }else{
+      this.setState({
+        score: this.state.score+1,
+        showNum: 0
+      })
+    }
+    this.startRound()
   }
   displayLifes=()=>{
     let lifesArray=[]
@@ -46,14 +74,15 @@ export default class componentName extends Component {
     if(this.state.lifes<1){
       return (
         <div id='numGameDisp'>
-
+          DONE
         </div>
       )
     }
     return (
       <div id='numGameDisp'>
         <div className='wordGameUi'>
-          {this.displayLifes()}
+          <div>{this.displayLifes()}</div>
+          <div>SCORE: {this.state.score}</div>
         </div>
         {this.state.showNum?
         <div>
@@ -64,7 +93,11 @@ export default class componentName extends Component {
               time={5}/* time in seconds */>
             </ProgressBar>
         </div>:
-        <form onSubmit={()=>this.startRound(this.state.number)} className={'marginAuto'}>
+        <form 
+          /* onSubmit={()=>this.startRound(this.state.number)} */ 
+          className={'marginAuto'}
+          onSubmit={this.enterNumber}
+        >
           <input
             className={'numInput'} 
             value={this.state.numberEntered} 
