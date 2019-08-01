@@ -22,18 +22,24 @@ export default class componentName extends Component {
   render() {
     return (
       <div className={'mainScreen'} id='welcomeBanner'>
-        {this.state.confirmOpen&&<ConfirmComp 
-          message={this.state.message}
-          close={()=>this.setState({confirmOpen: false})}
-        />}
+        {this.state.confirmOpen&&
+          <ConfirmComp 
+            message={this.state.message}
+            close={()=>this.setState({confirmOpen: false})}
+          />
+        }
         <div className={'maxWidth60'}>
-          {!this.state.loggedIn&&<UserTab 
-            logIn={()=>this.setState({loggedIn: true})} 
-            confirm={(message)=>this.confirm(message)}>
-          </UserTab>}
-          {this.state.loggedIn&&<History></History>}
-          {this.state.loggedIn&&<History></History>}
-          {this.state.loggedIn&&<History></History>}
+          {!this.state.loggedIn&&
+            <UserTab 
+              logIn={()=>this.setState({loggedIn: true})} 
+              confirm={(message)=>this.confirm(message)}>
+            </UserTab>
+          }
+          {this.state.loggedIn&&
+            [<History></History>,
+            <History></History>,
+            <History></History>]
+          }
           {/* <GuestScreen></GuestScreen> */}
         </div>
       </div>

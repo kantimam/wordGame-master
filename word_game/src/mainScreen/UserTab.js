@@ -16,17 +16,17 @@ export default class componentName extends Component {
     }
   signUp=(event)=>{
     event.preventDefault();
-    /* let formData=new FormData();
+    const formData=new FormData();
     formData.set('userName',this.state.userName)
     formData.set('email',this.state.email)
-    formData.set('password',this.state.password) */
-    let data=
+    formData.set('password',this.state.password)
+/*     let data=
       {
         userName:this.state.userName,
         email:this.state.email,
         password:this.state.password
-      }
-    axios.post('http://localhost:5000/user/add',data).then(res=>{
+      } */
+    axios.post('http://localhost:5000/user/add',formData).then(res=>{
       console.log(res.data)
       this.setState({logInState:0})
       this.props.confirm(res.data.message+res.data.data||`user <${this.state.userName}> created succesfully!`)
@@ -37,13 +37,11 @@ export default class componentName extends Component {
   }
   logIn=(event)=>{
     event.preventDefault();
-    let data=
-      {
-        userName:this.state.userName,
-        email:this.state.email,
-        password:this.state.password
-      }
-    axios.post('http://localhost:5000/login',data).then(res=>{
+    const formData=new FormData();
+    formData.set('userName',this.state.userName)
+    formData.set('email',this.state.email)
+    formData.set('password',this.state.password)
+    axios.post('http://localhost:5000/login',formData).then(res=>{
       console.log(res.data)
       this.props.confirm(res.data.message||`<${this.state.userName}> logged in!`)
       this.props.logIn()
@@ -63,15 +61,20 @@ export default class componentName extends Component {
   render() {
     return (
       <div id='userContainer'>
+        {this.state.logInState?
+          <div onClick={()=>this.setState({logInState: 0})}>ALREADY HAVE AN ACCOUNT? <strong>LOG IN!</strong></div>:
+          <div onClick={()=>this.setState({logInState: 1})}>NO ACCOUNT? <strong>SIGN UP</strong></div>
+        }
         {this.state.logInState===0 &&
         <form onSubmit={this.logIn} className={'logInForm'}>
-          <p>log in</p>
+          <p>LOG IN</p>
           <input onChange={this.onChange} name='userName' placeholder='email or username' type='text'></input>
           <input onChange={this.onChange} name='password' placeholder='password' type='password'></input>
           <input className={'submitButton'} type='submit'></input>        
         </form>}
         {this.state.logInState===1 &&
         <form onSubmit={this.signUp} className={'logInForm'}>
+          <p>SIGN UP</p>
           <input onChange={this.onChange} name='userName' placeholder='username' type='text'></input>
           <input onChange={this.onChange} name='email' placeholder='email' type='text'></input>
           <input onChange={this.onChange} name='password' placeholder='password' type='password'></input>
