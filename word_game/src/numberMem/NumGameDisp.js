@@ -7,6 +7,8 @@ export default class componentName extends Component {
     constructor(props) {
       super(props)
       this.currentRound=1;
+      this.numTimeOut=null;
+      this._isMounted=false;
       this.state = {
          number: "",
          showNum: 0,
@@ -17,7 +19,13 @@ export default class componentName extends Component {
     }
 
   componentDidMount=()=>{
+    this._isMounted=true;
     this.startRound()
+  }
+
+  componentWillUnmount=()=>{
+    this._isMounted=false;
+    clearInterval(this.numTimeOut)
   }
   startRound=()=>{
     if(!this.state.showNum){
@@ -27,23 +35,32 @@ export default class componentName extends Component {
 
         }
         let newNum=numArr.join('');
-        this.setState({number:newNum,showNum:1,numberEntered:''})
+        if(this._isMounted){
+          this.setState({number:newNum,showNum:1,numberEntered:''})
+        }
         this.currentRound++
     }
   }
 
   resetGame=()=>{
     this.currentRound=1;
-    this.setState({
-      number: "",
-      showNum: 0,
-      numberEntered: "",
-      lifes: 5
-    })
+    if(this._isMounted){
+      this.setState({
+        number: "",
+        showNum: 0,
+        numberEntered: "",
+        lifes: 5
+      })
+    }
+
   }
 
   showNum=(time)=>{
-    setTimeout(()=>this.setState({showNum:0}),time)
+    this.numTimeOut=setTimeout(()=>{
+      if(this._isMounted){
+        this.setState({showNum:0})
+      }
+    },time)
   }
 
   enterNumber=(event)=>{

@@ -16,7 +16,21 @@
   /* justify-content: space-between; */
   padding: 0 !important;
 }
+.navList>.somePadding, .userInfo>.somePadding{
+  list-style: none;
+  padding: 0.2rem 1rem 0.4rem 1rem;
+  cursor: pointer;
+}
+.navList>li:first-child{
+  
+}
+.navList>.somePadding:hover{
+  background-color: rgba(200,200,200,0.4)
+}
 
+.userInfo{
+  margin-left: auto;
+}
 
 /* BASE CLASSES */
 .centerAll{
@@ -37,17 +51,7 @@
 /* END BASE CLASSES */
 
 
-.navList>.somePadding{
-  list-style: none;
-  padding: 0.2rem 1rem 0.4rem 1rem;
-  cursor: pointer;
-}
-.navList>li:first-child{
-  
-}
-.navList>.somePadding:hover{
-  background-color: rgba(200,200,200,0.4)
-}
+
 
 /* GAME SELECTION */
 .fourPartGrid{

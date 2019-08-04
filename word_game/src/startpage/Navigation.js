@@ -1,24 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
+import UserInfo from './userInfo';
 import {Link} from 'react-router-dom'
 
-export default class componentName extends Component {
-    constructor(props) {
-      super(props)
-    
-      this.state = {
-         
-      }
-    }
-    
-  render() {
-    return (
-      <nav className={'topNav'}>
-        <ul className={'navList'}>
-            <Link className={'somePadding undecoratedLink'} to='/'>ME </Link>
-            <Link className={'somePadding undecoratedLink'} to='/'>GAMES</Link>
-            <Link className={'somePadding undecoratedLink'} to='/'>INFO</Link>
-        </ul>
-      </nav>
-    )
-  }
+
+const Navigation = () => {
+  return (
+    <nav className={'topNav'}>
+      <ul className={'navList'}>
+          <Link className={'somePadding undecoratedLink'} to='/'>ME </Link>
+          <Link className={'somePadding undecoratedLink'} to='/'>GAMES</Link>
+          <Link className={'somePadding undecoratedLink'} to='/'>INFO</Link>
+          <UserInfo/>
+      </ul>
+    </nav>
+  )
 }
+
+export default Navigation
+
