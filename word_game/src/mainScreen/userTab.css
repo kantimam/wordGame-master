@@ -4,8 +4,10 @@
     /* grid-column: 2/3; */
 }
 #logSignContainer{
+    z-index: 4;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem 0.5rem 2rem 0.5rem;
+    box-sizing: border-box;
     max-width: 20rem; 
     /* background-color: rgba(100, 100, 100, 0.5); */
     background-color: rgb(44, 53, 104);

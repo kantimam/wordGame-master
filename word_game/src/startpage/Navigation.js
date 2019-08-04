@@ -3,14 +3,14 @@ import UserInfo from './userInfo';
 import {Link} from 'react-router-dom'
 
 
-const Navigation = () => {
+const Navigation = ({location}) => {
   return (
     <nav className={'topNav'}>
       <ul className={'navList'}>
           <Link className={'somePadding undecoratedLink'} to='/'>GAMES</Link>
           <Link className={'somePadding undecoratedLink'} to='/'>ABOUT</Link>
           <Link className={'somePadding undecoratedLink'} to='/'>CONTACT</Link>
-          <UserInfo/>
+          <UserInfo currentPath={location.pathname}/>
       </ul>
     </nav>
   )

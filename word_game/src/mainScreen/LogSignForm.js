@@ -59,6 +59,7 @@ export default class componentName extends Component {
   }
 
   render() {
+    console.log("mounted login")
     return (
       <div id='logSignContainer'>
         {this.state.logInState?

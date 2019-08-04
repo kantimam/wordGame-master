@@ -52,14 +52,14 @@ const App = () => {
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
       <div className="App">
-      <Navigation></Navigation>
+      <Route component={Navigation}/>
         {false&&
           <ConfirmComp 
             message={"this.state.message"}
             close={"()=>this.setState({confirmOpen: false})"}
           />
         }
-        <Route path='/login' render={()=>
+        <Route path='*/login' render={()=>
           <FloatingContainer>
             <LogSign/>
           </FloatingContainer>
