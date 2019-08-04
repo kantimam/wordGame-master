@@ -20,7 +20,7 @@ export default class componentName extends Component {
       <div className={'spaceBgFull- horizontalGrid-'}>
         <Switch>
           <Route exact path='/' component={WelcomeBanner}/>
-          <Route path='/main' component={MainScreen}/>
+          <Route path='/main' render={()=><MainScreen/>}/>
         </Switch>
         <div id='GameOverview' className={'fullContainer maxWidth60'}>
         <div className={'fourPartGrid'}>

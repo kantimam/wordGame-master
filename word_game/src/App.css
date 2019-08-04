@@ -24,7 +24,7 @@
 .navList>li:first-child{
   
 }
-.navList>.somePadding:hover{
+.navList>.somePadding:hover,.userInfo>.somePadding:hover{
   background-color: rgba(200,200,200,0.4)
 }
 

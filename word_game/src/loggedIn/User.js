@@ -4,7 +4,7 @@ export default class ComponentName extends Component {
   render() {
     return (
       <div>
-        
+        WELCOME
       </div>
     )
   }

@@ -1,10 +1,11 @@
-.mainScreen>div{
+/* .mainScreen>div{
     width: 100%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-}
+} */
 .maxWidth60{
+    margin: 0 auto;
     max-width: 60rem;
 }
 @media (min-width: 320px) and (max-width: 480px) {

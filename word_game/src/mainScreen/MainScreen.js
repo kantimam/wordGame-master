@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import UserTab from './UserTab';
-import History from './History'
-//import GuestScreen from './GuestScreen'
+import GuestScreen from '../guest/GuestTab.js'
+import User from '../loggedIn/User.js';
 import './mainScreen.css'
 import ConfirmComp from '../components/ConfirmComp.js'
 
@@ -13,7 +12,7 @@ export default class componentName extends Component {
       this.state = {
         message: 'asasddasd',
         confirmOpen: false,
-        loggedIn: false
+        loggedIn: true
       }
     }
   confirm=(message)=>{
@@ -29,18 +28,10 @@ export default class componentName extends Component {
           />
         }
         <div className={'maxWidth60'}>
-          {!this.state.loggedIn&&
-            <UserTab 
-              logIn={()=>this.setState({loggedIn: true})} 
-              confirm={(message)=>this.confirm(message)}>
-            </UserTab>
+          {this.state.loggedIn?
+            <User/>:
+            <GuestScreen/>
           }
-          {this.state.loggedIn&&
-            [<History></History>,
-            <History></History>,
-            <History></History>]
-          }
-          {/* <GuestScreen></GuestScreen> */}
         </div>
       </div>
     )

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Redirect, Switch, Route} from 'react-router-dom';
+import { StateProvider } from './context/AppContextHook.js';
 import './App.css';
 import WordGame from './components/WordGame.js'
 import Games from './gameContainer/Games.js'
@@ -12,24 +13,57 @@ import Navigation from './startpage/Navigation.js'
 import RouteUndef from './components/RouteUndef.js'
 
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Navigation></Navigation>
-          <Switch>
-            <Route exact path='/' component={Home}/>
-            <Route exact path='/main' component={Home}/>
-            <Route path='/stats' component={Stats}/>
-            <Route path='/user:id' component={User}/>
-            <Route path='/games' component={Games}/>
-            {/* <Route path='/reactiongame' component={ReactionGame}/>
-            <Route path='/numGame' component={NumGame}/> */}
-            <Route component={RouteUndef}/>
-          </Switch>
-      </div>
-    );
+
+const App = () => {
+  const initialState={
+    loggedIn: false,
+    user: {
+      name: "schwartza",
+      score: {
+        word: 12,
+        number: 17,
+        reaction: 19 
+      }
+    },
+    score: {}
   }
+  const reducer=(state, action)=>{
+    switch(action.type){
+      case 'logIn':
+        return {
+          ...state,
+          user: action.payload,
+          loggedIn: true
+        }
+      case 'logOut':
+        return {
+          ...state,
+          loggedIn: false
+        }
+      default: 
+        return state;
+    }
+  }
+
+  return (
+    <StateProvider initialState={initialState} reducer={reducer}>
+      <div className="App">
+      <Navigation></Navigation>
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route exact path='/main' component={Home}/>
+          <Route path='/stats' component={Stats}/>
+          <Route path='/user:id' component={User}/>
+          <Route path='/games' component={Games}/>
+          {/* <Route path='/reactiongame' component={ReactionGame}/>
+          <Route path='/numGame' component={NumGame}/> */}
+          <Route component={RouteUndef}/>
+        </Switch>
+      </div>
+    </StateProvider>
+  )
 }
 
-export default App;
+export default App
+
+
