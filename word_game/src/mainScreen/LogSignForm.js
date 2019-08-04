@@ -60,7 +60,7 @@ export default class componentName extends Component {
 
   render() {
     return (
-      <div id='userContainer'>
+      <div id='logSignContainer'>
         {this.state.logInState?
           <div onClick={()=>this.setState({logInState: 0})}>ALREADY HAVE AN ACCOUNT? <strong>LOG IN!</strong></div>:
           <div onClick={()=>this.setState({logInState: 1})}>NO ACCOUNT? <strong>SIGN UP</strong></div>

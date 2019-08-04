@@ -21,12 +21,6 @@ export default class componentName extends Component {
   render() {
     return (
       <div className={'mainScreen'} id='welcomeBanner'>
-        {this.state.confirmOpen&&
-          <ConfirmComp 
-            message={this.state.message}
-            close={()=>this.setState({confirmOpen: false})}
-          />
-        }
         <div className={'maxWidth60'}>
           {this.state.loggedIn?
             <User/>:

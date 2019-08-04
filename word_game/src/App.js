@@ -8,9 +8,13 @@ import Home from './startpage/Home.js'
 import Stats from './loggedIn/Stats.js'
 import User from './loggedIn/User.js'
 import Navigation from './startpage/Navigation.js'
+import ConfirmComp from './components/ConfirmComp.js'
 /* import ReactionGame from './reactionGame/ReactionGame.js' */
 /* import NumGame from './numberMem/NumGame.js' */
+import FloatingContainer from './startpage/floatingContainer.jsx';
+import LogSign from './mainScreen/LogSignForm.js';
 import RouteUndef from './components/RouteUndef.js'
+
 
 
 
@@ -49,12 +53,24 @@ const App = () => {
     <StateProvider initialState={initialState} reducer={reducer}>
       <div className="App">
       <Navigation></Navigation>
+        {false&&
+          <ConfirmComp 
+            message={"this.state.message"}
+            close={"()=>this.setState({confirmOpen: false})"}
+          />
+        }
+        <Route path='/login' render={()=>
+          <FloatingContainer>
+            <LogSign/>
+          </FloatingContainer>
+        }/>
+
         <Switch>
-          <Route exact path='/' component={Home}/>
-          <Route exact path='/main' component={Home}/>
+          {/* <Route exact path='/' component={Home}/> */}
           <Route path='/stats' component={Stats}/>
           <Route path='/user:id' component={User}/>
           <Route path='/games' component={Games}/>
+          <Route path='/' component={Home}/>
           {/* <Route path='/reactiongame' component={ReactionGame}/>
           <Route path='/numGame' component={NumGame}/> */}
           <Route component={RouteUndef}/>
