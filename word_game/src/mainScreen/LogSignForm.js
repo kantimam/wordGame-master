@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './userTab.css'
 import axios from 'axios'
+const BASEURL=process.env.REACT_APP_BE_URL;
 
 export default class componentName extends Component {
     constructor(props) {
@@ -20,13 +21,8 @@ export default class componentName extends Component {
     formData.set('userName',this.state.userName)
     formData.set('email',this.state.email)
     formData.set('password',this.state.password)
-/*     let data=
-      {
-        userName:this.state.userName,
-        email:this.state.email,
-        password:this.state.password
-      } */
-    axios.post('http://localhost:5000/user/add',formData).then(res=>{
+
+    axios.post(`${BASEURL}/user/create`,formData).then(res=>{
       console.log(res.data)
       this.setState({logInState:0})
       this.props.confirm(res.data.message+res.data.data||`user <${this.state.userName}> created succesfully!`)
@@ -41,7 +37,7 @@ export default class componentName extends Component {
     formData.set('userName',this.state.userName)
     formData.set('email',this.state.email)
     formData.set('password',this.state.password)
-    axios.post('http://localhost:5000/login',formData).then(res=>{
+    axios.post(`${BASEURL}/login`,formData).then(res=>{
       console.log(res.data)
       this.props.confirm(res.data.message||`<${this.state.userName}> logged in!`)
       this.props.logIn()
@@ -59,7 +55,7 @@ export default class componentName extends Component {
   }
 
   render() {
-    console.log("mounted login")
+    console.dir(BASEURL)
     return (
       <div id='logSignContainer'>
         {this.state.logInState?
