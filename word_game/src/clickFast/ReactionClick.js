@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SaveScore from '../components/SaveScore.jsx';
 import './clickFast.css'
 
 export default class ReactionClick extends Component {
@@ -66,6 +67,7 @@ export default class ReactionClick extends Component {
         return (
             <div onClick={this.checkReaction} style={{backgroundColor:this.colors[reaction]}} className={'clickFastComp centerAll'}>
                 <h1>{message}</h1>
+                <SaveScore currentPath={this.props.location.pathname} gameName={'react'} gameScore={20}/>
             </div>
         )
     }

@@ -1,9 +1,10 @@
 import React from 'react'
 import UserInfo from './userInfo';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 
 const Navigation = ({location}) => {
+
   return (
     <nav className={'topNav'}>
       <ul className={'navList'}>

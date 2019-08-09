@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import {Redirect, Switch, Route} from 'react-router-dom';
-import { StateProvider } from './context/AppContextHook.js';
 import './App.css';
 import WordGame from './components/WordGame.js'
 import Games from './gameContainer/Games.js'
@@ -14,44 +13,24 @@ import ConfirmComp from './components/ConfirmComp.js'
 import FloatingContainer from './startpage/floatingContainer.jsx';
 import LogSign from './mainScreen/LogSignForm.js';
 import RouteUndef from './components/RouteUndef.js'
+import { useStateValue } from './context/AppContextHook';
 
 
 
 
 const App = () => {
-  const initialState={
-    loggedIn: false,
-    user: {
-      name: "schwartza",
-      score: {
-        word: 12,
-        number: 17,
-        reaction: 19 
-      }
-    },
-    score: {}
-  }
-  const reducer=(state, action)=>{
-    switch(action.type){
-      case 'logIn':
-        return {
-          ...state,
-          user: action.payload,
-          loggedIn: true
-        }
-      case 'logOut':
-        return {
-          ...state,
-          loggedIn: false
-        }
-      default: 
-        return state;
+  const [{user, loggedIn},dispatch]=useStateValue();
+
+  useEffect(()=>{
+    // check if we have userdata in local storage if so recover state from it
+    const storedUser=localStorage.getItem('monkeyGameSession');
+    if(storedUser){
+      dispatch({type: 'logIn', payload: JSON.parse(storedUser)})
     }
-  }
+  },[])
 
   return (
-    <StateProvider initialState={initialState} reducer={reducer}>
-      <div className="App">
+    <div className="App" /* onClick={()=>console.log(user)} */>
       <Route component={Navigation}/>
         {false&&
           <ConfirmComp 
@@ -59,9 +38,9 @@ const App = () => {
             close={"()=>this.setState({confirmOpen: false})"}
           />
         }
-        <Route path='*/login' render={()=>
+        <Route path='*/login' render={({history})=>
           <FloatingContainer>
-            <LogSign/>
+            <LogSign history={history}/>
           </FloatingContainer>
         }/>
 
@@ -75,8 +54,7 @@ const App = () => {
           <Route path='/numGame' component={NumGame}/> */}
           <Route component={RouteUndef}/>
         </Switch>
-      </div>
-    </StateProvider>
+    </div>
   )
 }
 
