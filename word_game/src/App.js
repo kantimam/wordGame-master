@@ -20,6 +20,7 @@ import { useStateValue } from './context/AppContextHook';
 
 const App = () => {
   const [{user, loggedIn},dispatch]=useStateValue();
+  let unloadListener;
 
   useEffect(()=>{
     // check if we have userdata in local storage if so recover state from it
@@ -28,6 +29,24 @@ const App = () => {
       dispatch({type: 'logIn', payload: JSON.parse(storedUser)})
     }
   },[])
+
+  const stateLocalStore=(event)=>{
+    event.preventDefault();
+    if(loggedIn && user &&  user.email){
+      console.log(user, loggedIn)
+      localStorage.setItem('monkeyGameSession',JSON.stringify(user));
+    }
+  }
+
+  useEffect(()=>{
+    // update beforeunload event with new data from user state
+    unloadListener=window.addEventListener('beforeunload',stateLocalStore);
+    return()=>{
+      window.removeEventListener('beforeunload',stateLocalStore)
+    } 
+  },[user])
+
+
 
   return (
     <div className="App" /* onClick={()=>console.log(user)} */>

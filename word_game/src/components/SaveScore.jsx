@@ -1,6 +1,8 @@
 import React from 'react';
 import { useStateValue } from '../context/AppContextHook';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
+const BASEURL=process.env.REACT_APP_BE_URL;
 
 
 const SaveScore=({gameName, gameScore, currentPath})=>{
@@ -17,18 +19,35 @@ const SaveScore=({gameName, gameScore, currentPath})=>{
             return '/login';
         }
     }
+    const sendScore=(event)=>{
+        event.preventDefault();
+        const formData=new FormData();
+        formData.set('game',gameName)
+        formData.set('score',gameScore)
+        axios.post(`${BASEURL}/setscore`,formData ,{withCredentials: true} ).then(res=>{
+          console.log(res.data)
+          if(res.data.user){
+            dispatch({
+              type: 'setScore',
+              target: gameName,
+              payload: gameScore
+            })
+          }
+        }).catch((error)=>{
+          console.log(error)
+        })
+      }
     
     if(loggedIn){
-        console.log(user)
         const stateGameScore=user.scores && user.scores[gameName]? user.scores[gameName] : 0;
         return(
             <div className={'saveScore'}>
                 <button className={'roundedButton hoverPush'}>
                     TRY AGAIN
                 </button>
-                <h1>{'new score' +' : '+ stateGameScore}</h1>
+                <h1>{'new score: '+stateGameScore}</h1>
                 <h1>your current high score: {gameScore}</h1>
-                <button className={'roundedButton hoverPush'}>
+                <button onClick={sendScore} className={'roundedButton hoverPush'}>
                     SEND
                 </button>
             </div>
