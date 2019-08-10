@@ -137,3 +137,16 @@
  }
  
 }
+
+.saveScore{
+  height: 100%;
+  width: 100%;
+}
+
+
+.saveScore>button{
+  display: block;
+  margin: 0 auto;
+  width: 90% !important;
+  max-width: 20rem;
+}

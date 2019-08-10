@@ -11,7 +11,8 @@ export default class ReactionClick extends Component {
         this.state = {
             message: 'click when the color changes to green',
             reaction: 0,
-            resetWait: false
+            resetWait: false,
+            playing: true
         }
     }
     changeColor=(timeRange)=>{
@@ -46,13 +47,15 @@ export default class ReactionClick extends Component {
                 const reactionTime=Date.now()-this.startTime;
                 this.setState({
                     resetWait: true,
-                    message: `good job! your time is: ${reactionTime} ms`
+                    message: `good job! your time is: ${reactionTime} ms`,
+                    playing: false
                 })
             }else if(this.state.reaction===0){
                 this.setState({
                     resetWait: true,
                     message: `you clicked to early try again! :)`,
-                    reaction: 2
+                    reaction: 2,
+                    playing: false
                 })
             }
         }else{
@@ -63,11 +66,13 @@ export default class ReactionClick extends Component {
 
     
     render() {
-        const {message,reaction}=this.state;
+        const {message,reaction,playing}=this.state;
         return (
             <div onClick={this.checkReaction} style={{backgroundColor:this.colors[reaction]}} className={'clickFastComp centerAll'}>
-                <h1>{message}</h1>
-                <SaveScore currentPath={this.props.location.pathname} gameName={'react'} gameScore={20}/>
+                {playing?
+                    <h1>{message}</h1>:
+                    <SaveScore currentPath={this.props.location.pathname} gameName={'reaction'} gameScore={20}/>
+                }
             </div>
         )
     }

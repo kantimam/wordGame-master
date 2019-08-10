@@ -19,15 +19,23 @@ const SaveScore=({gameName, gameScore, currentPath})=>{
     }
     
     if(loggedIn){
+        console.log(user)
+        const stateGameScore=user.scores && user.scores[gameName]? user.scores[gameName] : 0;
         return(
-            <div className={'centerAll'}>
-                <p>{gameName +' : '+ user.score? user.score[gameName] : 0}</p>
-                <p>current Score: {gameScore}</p>
+            <div className={'saveScore'}>
+                <button className={'roundedButton hoverPush'}>
+                    TRY AGAIN
+                </button>
+                <h1>{'new score' +' : '+ stateGameScore}</h1>
+                <h1>your current high score: {gameScore}</h1>
+                <button className={'roundedButton hoverPush'}>
+                    SEND
+                </button>
             </div>
         )
     }
     return(
-        <div className={'centerAll'}>
+        <div className={'saveScore'}>
             <Link to={getLink(currentPath)}>you are not logged in click to log in</Link>
         </div>
     )
