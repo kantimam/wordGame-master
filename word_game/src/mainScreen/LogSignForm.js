@@ -46,7 +46,8 @@ const LogSignForm=({history})=> {
     //formData.set('userName',logForm.userName)
     formData.set('email',logForm.email)
     formData.set('password',logForm.password)
-    axios.post(`${BASEURL}/login`,formData /*, {withCredentials: true} */).then(res=>{
+    //axios.defaults.withCredentials=true;
+    axios.post(`${BASEURL}/login`,formData, {withCredentials: true}).then(res=>{
       console.log(res.data)
       //this.props.confirm(res.data.message||`<${logForm.userName}> logged in!`)
       //setFormMode(2)
