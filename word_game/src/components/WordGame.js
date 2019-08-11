@@ -4,6 +4,7 @@ import ScoreUi from './ScoreUi.js'
 import AnimatedDisplay from './AnimatedDisplay.js'
 import GameOver from './GameOver.js'
 import axios from 'axios';
+import SaveScore from './SaveScore';
 const wordArray=["hello","black","white","nazi","fun","friendship","hell"]
 
 export default class componentName extends Component {
@@ -107,9 +108,9 @@ export default class componentName extends Component {
     
     return (
       <div className={'fullContainer gradientBackground noUserSelect'}>
-        {this.state.gameOver&&
-          <GameOver score={this.state.score} restart={this.restartGame}/>}
-        {!this.state.gameOver&&<div>
+        {this.state.gameOver?
+          <SaveScore currentPath={this.props.location.pathname} gameName={'word'} gameScore={this.state.score}/>:
+        <div>
         <ScoreUi 
           score={this.state.score}
           lifes={this.state.lifes}  

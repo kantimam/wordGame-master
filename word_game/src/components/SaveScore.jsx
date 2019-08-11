@@ -48,8 +48,8 @@ const SaveScore=({gameName, gameScore, currentPath})=>{
                     <button className={'roundedButton hoverPush'}>
                         TRY AGAIN
                     </button>
-                    <h1>{'new score: '+stateGameScore}</h1>
-                    <h1>your current high score: {gameScore}</h1>
+                    <h1>{'new score: '+gameScore}</h1>
+                    <h1>your current high score: {stateGameScore}</h1>
                     <button onClick={sendScore} className={'roundedButton hoverPush'}>
                         SEND
                     </button>

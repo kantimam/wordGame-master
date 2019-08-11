@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../components/wordGame.css'
 import './numGame.css'
 import ProgressBar from '../components/ProgressBar.js'
+import SaveScore from '../components/SaveScore';
 
 export default class componentName extends Component {
     constructor(props) {
@@ -90,10 +91,8 @@ export default class componentName extends Component {
   render() {
     if(this.state.lifes<1){
       return (
-        <div id='numGameDisp'>
-          DONE
-        </div>
-      )
+        <SaveScore currentPath={this.props.location.pathname} gameName={'number'} gameScore={this.state.score}/>
+        )
     }
     return (
       <div id='numGameDisp'>
