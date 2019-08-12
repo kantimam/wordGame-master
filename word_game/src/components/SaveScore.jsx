@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { useStateValue } from '../context/AppContextHook';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import LogInLink from './LogInLink';
 const BASEURL=process.env.REACT_APP_BE_URL;
 
 
@@ -9,17 +10,7 @@ const SaveScore=({gameName, gameScore, currentPath, restart})=>{
     const [{user, loggedIn},dispatch]=useStateValue();
     const [sendState,setSendState]=useState(0);
 
-    const getLink=(currentPath)=>{
-        if(currentPath!=='/'){
-            if(currentPath.split('/').includes('login')){
-                return currentPath;
-            }else{
-                return `${currentPath}/login`;
-            }
-        }else{
-            return '/login';
-        }
-    }
+
     const sendScore=(event)=>{
         event.preventDefault();
         const formData=new FormData();
@@ -40,33 +31,34 @@ const SaveScore=({gameName, gameScore, currentPath, restart})=>{
         console.log(sendState)
       }
     
-    if(loggedIn){
-        const stateGameScore=user.scores && user.scores[gameName]? user.scores[gameName] : 0;
-        return(
-            <div className={'saveScore'}>
-                <button onClick={restart} className={'roundedButton hoverPush'}>
-                    TRY AGAIN
-                </button>
-                {!sendState?
+    const stateGameScore=user.scores && user.scores[gameName]? user.scores[gameName] : 0;
+    return(
+        <div className={'saveScore'}>
+            {
+                loggedIn?
+                    !sendState?
                     <>
-                        <h1>{'new score: '+gameScore}</h1>
+                        <h1>{'score: '+gameScore}</h1>
                         <h1>your current high score: {stateGameScore}</h1>
                         <button onClick={sendScore} className={'roundedButton hoverPush'}>
                             SEND
                         </button>
                     </>:
-                    <h1>{sendState>1?"SUCESFULLY SEND YOUR SCORE" : "SOMETHING WENT WRONG"}</h1>
-                }
-                
-            </div>
-        )
-    
-    }
-    return(
-        <div className={'saveScore'}>
-            <Link to={getLink(currentPath)}>you are not logged in click to log in</Link>
+                    <h1>{sendState>1?"SUCESFULLY SEND YOUR SCORE" : "SOMETHING WENT WRONG"}</h1>:
+                <>                    
+                    <LogInLink currentPath={currentPath}/>
+                    <h1>{'score: '+gameScore}</h1>
+                </>
+
+            }
+            <button onClick={restart} style={{marginTop: '2rem'}} className={'roundedButton hoverPush'}>
+                TRY AGAIN
+            </button>
         </div>
     )
+    
+    
+
 }
 
 export default SaveScore

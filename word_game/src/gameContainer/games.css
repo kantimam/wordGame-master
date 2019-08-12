@@ -1,14 +1,5 @@
 .gamesContainer{
     padding-top: 2rem;
 }
-.gamesContainer>main{
-    background-color: lightcyan;
 
-}
-.gamesContainer>#desc{
-    background-color: lightpink;
-    margin: 0 auto;
-}
-.gamesContainer>#desc>h1{
-    text-align: left;
-}
+

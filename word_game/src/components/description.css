@@ -1,0 +1,14 @@
+#descriptionBox{
+    display: flex;
+}
+#descStatsSection{
+    margin-right: 4rem;
+}
+
+#descInfoSection{
+    flex: 1;
+}
+
+#descriptionBox>section>h1,#descriptionBox>section>p{
+    text-align: left !important;
+}

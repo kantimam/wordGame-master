@@ -18,10 +18,6 @@ const Games = () => {
                     <Route path='/games/reactiongame' component={ReactionClick}/>
                 </Switch>
                 </main>
-                <div id={'desc'} className={'inner'}>
-                    <h1>HEY</h1>
-                    <p>ABOUT THE GAME</p>
-                </div>
             </div>
     )
 }

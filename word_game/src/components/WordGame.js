@@ -5,6 +5,7 @@ import AnimatedDisplay from './AnimatedDisplay.js'
 import GameOver from './GameOver.js'
 import axios from 'axios';
 import SaveScore from './SaveScore';
+import Description from '../components/Description.jsx';
 const wordArray=["hello","black","white","nazi","fun","friendship","hell"]
 
 export default class componentName extends Component {
@@ -107,32 +108,40 @@ export default class componentName extends Component {
     console.log(this.state.currentWord+' was alrdy seen '+this.seenWords.includes(this.state.currentWord))
     
     return (
-      <div className={'fullContainer gradientBackground noUserSelect'}>
-        {this.state.gameOver?
-          <SaveScore currentPath={this.props.location.pathname} gameName={'word'} gameScore={this.state.score} restart={this.restartGame}/>:
-        <div>
-        <ScoreUi 
-          score={this.state.score}
-          lifes={this.state.lifes}  
-        ></ScoreUi>
-        <AnimatedDisplay 
-          roundOne={this.state.animated}
-          roundTwo={!this.state.animated}  
-          word={this.state.currentWord}
-          prevWord={this.state.prevWord}
-          displayButton={false}
-          getNewWord={this.newWord}>
-        </AnimatedDisplay>
-        {/* <button 
-          onClick={(event)=>this.newWord(event, Math.round(Math.random()))} 
-          className={'roundedButton hoverPush'}>NEW WORD!
-        </button> */}
-        <div id='gameButtonContainer'>
-          <button onClick={this.seenNew} value={1} className={'roundedButton hoverPush'}>NEW</button>
-          <button onClick={this.seenNew} value={0}  className={'roundedButton hoverPush'}>SEEN</button>
+        <>
+          <div className={'fullContainer gradientBackground noUserSelect'}>
+          {this.state.gameOver?
+            <SaveScore currentPath={this.props.location.pathname} gameName={'word'} gameScore={this.state.score} restart={this.restartGame}/>:
+          <div>
+          <ScoreUi 
+            score={this.state.score}
+            lifes={this.state.lifes}  
+          ></ScoreUi>
+          <AnimatedDisplay 
+            roundOne={this.state.animated}
+            roundTwo={!this.state.animated}  
+            word={this.state.currentWord}
+            prevWord={this.state.prevWord}
+            displayButton={false}
+            getNewWord={this.newWord}>
+          </AnimatedDisplay>
+          {/* <button 
+            onClick={(event)=>this.newWord(event, Math.round(Math.random()))} 
+            className={'roundedButton hoverPush'}>NEW WORD!
+          </button> */}
+          <div id='gameButtonContainer'>
+            <button onClick={this.seenNew} value={1} className={'roundedButton hoverPush'}>NEW</button>
+            <button onClick={this.seenNew} value={0}  className={'roundedButton hoverPush'}>SEEN</button>
+          </div>
+          </div>}
         </div>
-        </div>}
-      </div>
+        <Description
+          stats={'word'}
+          header={"word memory game"}
+          text={"a game to test your word memory"}
+        />
+      </>
+
     )
   }
 }

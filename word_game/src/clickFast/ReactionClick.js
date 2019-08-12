@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SaveScore from '../components/SaveScore.jsx';
 import './clickFast.css'
+import Description from '../components/Description.jsx';
 
 export default class ReactionClick extends Component {
     constructor(props) {
@@ -68,12 +69,19 @@ export default class ReactionClick extends Component {
     render() {
         const {message,reaction,playing}=this.state;
         return (
-            <div onClick={this.checkReaction} style={{backgroundColor:this.colors[reaction]}} className={'clickFastComp centerAll'}>
-                {playing?
-                    <h1>{message}</h1>:
-                    <SaveScore currentPath={this.props.location.pathname} gameName={'reaction'} gameScore={20}/>
-                }
-            </div>
+            <>
+                <div onClick={this.checkReaction} style={{backgroundColor:this.colors[reaction]}} className={'clickFastComp centerAll'}>
+                    {playing?
+                        <h1>{message}</h1>:
+                        <SaveScore currentPath={this.props.location.pathname} gameName={'reaction'} gameScore={20}/>
+                    }
+                </div>
+                <Description
+                    header={""}
+                    text={""}
+                />
+
+            </>
         )
     }
 }
