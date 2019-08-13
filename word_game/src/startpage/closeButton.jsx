@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import './closeButton.css';
 
-const closeButton = () => {
+const closeButton = ({close, customStyle}) => {
     return (
-        <div>
-            
+        <div className={'centerAll pointer closeButton'} style={customStyle} onClick={close}>
+            <p className='noMargin'>X</p>
         </div>
     )
 }

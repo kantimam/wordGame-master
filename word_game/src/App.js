@@ -58,7 +58,8 @@ const App = () => {
           />
         }
         <Route path='*/login' render={({history})=>
-          <FloatingContainer>
+          <FloatingContainer close={history.goBack}>
+            {console.log(history)}
             <LogSign history={history}/>
           </FloatingContainer>
         }/>

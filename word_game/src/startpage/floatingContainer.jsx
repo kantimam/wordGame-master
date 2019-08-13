@@ -1,5 +1,6 @@
 import React from 'react'
 import CloseButton from './closeButton.jsx';
+import LogInLink from '../components/LogInLink.jsx';
 
 const floatingContainer = ({children, close}) => {
     const style={
@@ -10,8 +11,17 @@ const floatingContainer = ({children, close}) => {
     }
     return (
         <div style={style}>
-            <CloseButton close={close}/>
-            {children}
+            <div style={{margin: '0 auto', position: 'relative', maxWidth: '90%'}}>
+                <CloseButton 
+                    close={close} 
+                    customStyle={{
+                        position: 'absolute',
+                        right: '-1rem',
+                        top: '-1rem'
+                    }}
+                />
+                {children}
+            </div>
         </div>
     )
 }
