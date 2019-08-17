@@ -8,6 +8,7 @@ const floatingContainer = ({children, close}) => {
         top: "5rem",
         width: "100%",
         display: "flex",
+        zIndex: 4
     }
     return (
         <div style={style}>

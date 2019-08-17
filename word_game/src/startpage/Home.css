@@ -2,7 +2,9 @@
     height: 100%;
 } */
 #welcomeBanner{
-    height: 22rem;
+    flex: 1;
+
+    /* height: 22rem; */
     display: grid;
     /* background-image: url('./space.jpg'); */
     background-size: cover;

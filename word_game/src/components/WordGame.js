@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import './wordGame.css'
 import ScoreUi from './ScoreUi.js'
 import AnimatedDisplay from './AnimatedDisplay.js'
-import GameOver from './GameOver.js'
 import axios from 'axios';
 import SaveScore from './SaveScore';
 import Description from '../components/Description.jsx';
+const BASEURL=process.env.REACT_APP_BASEURL;
 const wordArray=["hello","black","white","nazi","fun","friendship","hell"]
+
 
 export default class componentName extends Component {
     constructor(props) {
@@ -28,9 +29,8 @@ export default class componentName extends Component {
     }
     wordFromAPI=()=>{
       let previousWord=this.state.currentWord;
-      axios.get('http://82.165.121.77:5000/api/word/')
+      axios.get(`${BASEURL}/randomword`)
         .then(response=>{
-        console.log(response.data)
         this.setState({
           prevWord: previousWord,
           currentWord: response.data,
@@ -40,16 +40,9 @@ export default class componentName extends Component {
         console.log(error)
       })
       
-      /* this.callApi()
-      .then(res => this.setState({ response: res.express },()=>console.log(res.express)))
-      .catch(err => console.log(err)); */
+
     }
-    callApi = async () => {
-      const response = await fetch('192.168.56.1:5000/api/word');
-      const body = await response.json();
-      if (response.status !== 200) throw Error(body.message);
-      return body;
-    };
+
 
     newWord=(/* event,  */mode)=>{
       let previousWord=this.state.currentWord;
@@ -102,11 +95,11 @@ export default class componentName extends Component {
     }
     
   render() {
-    console.log('the current word is: '+this.state.currentWord)
+/*     console.log('the current word is: '+this.state.currentWord)
     console.log('the mode is: '+this.currentMode)
     console.log(this.seenWords)
     console.log(this.state.currentWord+' was alrdy seen '+this.seenWords.includes(this.state.currentWord))
-    
+     */
     return (
         <>
           <div className={'fullContainer gradientBackground noUserSelect'}>
