@@ -21,9 +21,9 @@
   padding: 0.2rem 1rem 0.4rem 1rem;
   cursor: pointer;
 }
-.navList>li:first-child{
+/* .navList>li:first-child{
   
-}
+} */
 .navList>.somePadding:hover,.userInfo>.somePadding:hover{
   background-color: rgba(200,200,200,0.4)
 }
@@ -41,6 +41,13 @@
 }
 .marginAuto{
   margin: 0 auto;
+}
+.centerItem{
+  margin: auto;
+}
+.fillContainer{
+  width: 100%;
+  height: 100%;
 }
 .textCenter{
   text-align: center;

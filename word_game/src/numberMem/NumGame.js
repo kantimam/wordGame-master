@@ -9,7 +9,7 @@ const NumGame=({location})=> {
   
     return (
       <>
-        <div className={'fullContainer gradientBackground noUserSelect moreHeight'}>
+        <div id='numGameContainer' className={'inner gradientBackground noUserSelect marginAuto'}>
           <NumGameDisp location={location}/>
         </div>
         <Description

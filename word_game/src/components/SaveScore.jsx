@@ -41,7 +41,7 @@ const SaveScore=({gameName, gameScore, currentPath, restart})=>{
                     <>
                         <h1 className={'fadeIn saveScoreAnim1'}>{'score: '+gameScore}</h1>
                         <h1 className={'fadeIn saveScoreAnim2'}>your current high score: {stateGameScore}</h1>
-                        <button className={'fadeIn saveScoreAnim3'} onClick={sendScore} className={'roundedButton hoverPush'}>
+                        <button className={'fadeIn saveScoreAnim3 roundedButton hoverPush'} onClick={sendScore}>
                             SEND
                         </button>
                     </>:

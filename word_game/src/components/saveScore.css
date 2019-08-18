@@ -44,3 +44,10 @@
         opacity: 1;
       }
   }
+
+
+
+  .inputNumber{
+    font-size: 3.5rem !important;
+    margin: 0;
+  }
