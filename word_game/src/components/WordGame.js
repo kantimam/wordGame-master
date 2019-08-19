@@ -129,7 +129,7 @@ export default class componentName extends Component {
           </div>}
         </div>
         <Description
-          stats={'word'}
+          gameName={'word'}
           header={"word memory game"}
           text={"a game to test your word memory"}
         />

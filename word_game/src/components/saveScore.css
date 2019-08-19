@@ -50,4 +50,5 @@
   .inputNumber{
     font-size: 3.5rem !important;
     margin: 0;
+    text-decoration-line: line-through;
   }

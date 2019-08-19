@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './description.css'
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import axios from 'axios'
+import { AreaChart, Area, /* Line, */ CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+const BASEURL=process.env.REACT_APP_BE_URL;
 
-const Description = ({header, text, stats}) => {
+const Description = ({header, text, gameName}) => {
+    const [scores, setScores]=useState([])
     const data = [
         {score: 0, count: 0, pv: 2400, amt: 2400},
         {score: 1, count: 30, pv: 2400, amt: 2400},
@@ -11,17 +14,31 @@ const Description = ({header, text, stats}) => {
         {score: 4, count: 10, pv: 2400, amt: 2400},
         {score: 5, count: 23, pv: 2400, amt: 2400},
     ];
+    useEffect(()=>{
+        axios.get(`${BASEURL}/getstats/${gameName}`).then(res=>{
+            console.log(res.data)
+            let scoreArr=[]
+            for(let key in res.data){
+                scoreArr.push({
+                    score: key,
+                    percent: res.data[key]
+                })
+            }
+            setScores(scoreArr)
+            console.log(scoreArr)
+        })
+    },[])
     return (
         <div id='descriptionBox' className={'inner marginAuto'}>
             <section id='descStatsSection'>
                 <h1>STATS</h1>
-                <LineChart width={500} height={300} data={data}>
-                    <Line type="monotone" dataKey="count" stroke="#8884d8" />
+                <AreaChart width={500} height={300} data={scores}>
+                    <Area type="monotone" dataKey="percent" stroke="#8884d8" />
                     <CartesianGrid stroke="#ccc" />
                     <XAxis dataKey="score" />
-                    <YAxis />
+                    <YAxis /* dataKey="percent" */ />
                     <Tooltip />
-                </LineChart>
+                </AreaChart>
             </section>
             <section id='descInfoSection'>
                 <h1>
