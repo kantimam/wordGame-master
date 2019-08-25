@@ -13,7 +13,7 @@ const AfterGame = ({number, numberEntered, lifes, nextRound, saveScore}) => {
         <div className={'saveScore'}>
             <h1 className={'fadeIn saveScoreAnim1 realNumber'}>{number}</h1>
             <h2 
-                style={number===numberEntered?{}:{textDecorationLine: 'line-through'}} 
+                style={number===numberEntered?{textDecorationLine: 'none'}:{textDecorationLine: 'line-through'}} 
                 className={'fadeIn saveScoreAnim2 inputNumber'}
             >
                 {numberEntered}

@@ -126,7 +126,7 @@ export default class componentName extends Component {
               <ProgressBar 
                 finished={()=>this.setState({showNum:0})} 
                 maxWidth={10}/* in rem */ 
-                time={5}/* time in seconds */>
+                time={4}/* time in seconds */>
               </ProgressBar>
           </div>:
           <NumGameInput

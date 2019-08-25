@@ -15,6 +15,7 @@ const NumGame=({location})=> {
         <Description
           header={""}
           text={""}
+          gameName="number"
         />
       </>
 

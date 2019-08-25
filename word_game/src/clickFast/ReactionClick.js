@@ -11,15 +11,16 @@ export default class ReactionClick extends Component {
         this.timeOutRef=0;        
         this.state = {
             message: 'click when the color changes to green',
-            reaction: 0,
+            gameState: 0,
             resetWait: false,
-            playing: true
+            playing: true,
+            reactionTime: 0
         }
     }
     changeColor=(timeRange)=>{
         this.setState({
             message: 'click when the color changes to green',
-            reaction: 0,
+            gameState: 0,
             resetWait: false 
         })
         
@@ -27,9 +28,9 @@ export default class ReactionClick extends Component {
             const maxWait=timeRange[1] || 5;
             const waitTime=(Math.random()*(maxWait-minWait)+minWait)*1000;
             this.timeOutRef=setTimeout(()=>{
-            if(this.state.reaction===0){
+            if(this.state.gameState===0){
                 this.setState({
-                    reaction: 1
+                    gameState: 1
                 },()=>this.startTime=Date.now())}
             },waitTime)
         
@@ -44,10 +45,11 @@ export default class ReactionClick extends Component {
     }
     checkReaction=()=>{
         if(!this.state.resetWait){
-            if(this.state.reaction===1){
+            if(this.state.gameState===1){
                 const reactionTime=Date.now()-this.startTime;
                 this.setState({
                     resetWait: true,
+                    reactionTime: reactionTime,
                     message: `good job! your time is: ${reactionTime} ms`,
                     playing: false
                 })
@@ -55,7 +57,7 @@ export default class ReactionClick extends Component {
                 this.setState({
                     resetWait: true,
                     message: `you clicked to early try again! :)`,
-                    reaction: 2,
+                    gameState: 2,
                     playing: false
                 })
             }
@@ -67,18 +69,19 @@ export default class ReactionClick extends Component {
 
     
     render() {
-        const {message,reaction,playing}=this.state;
+        const {message,gameState,playing, reactionTime}=this.state;
         return (
             <>
-                <div onClick={this.checkReaction} style={{backgroundColor:this.colors[reaction]}} className={'clickFastComp centerAll'}>
+                <div onClick={this.checkReaction} style={{backgroundColor:this.colors[gameState]}} className={'clickFastComp centerAll'}>
                     {playing?
                         <h1>{message}</h1>:
-                        <SaveScore currentPath={this.props.location.pathname} gameName={'reaction'} gameScore={20}/>
+                        <SaveScore currentPath={this.props.location.pathname} gameName={'reaction'} gameScore={`${reactionTime} ms`}/>
                     }
                 </div>
                 <Description
                     header={""}
                     text={""}
+                    gameName="reaction"
                 />
 
             </>

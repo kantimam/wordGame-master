@@ -6,14 +6,6 @@ const BASEURL=process.env.REACT_APP_BE_URL;
 
 const Description = ({header, text, gameName}) => {
     const [scores, setScores]=useState([])
-    const data = [
-        {score: 0, count: 0, pv: 2400, amt: 2400},
-        {score: 1, count: 30, pv: 2400, amt: 2400},
-        {score: 2, count: 79, pv: 2400, amt: 2400},
-        {score: 3, count: 40, pv: 2400, amt: 2400},
-        {score: 4, count: 10, pv: 2400, amt: 2400},
-        {score: 5, count: 23, pv: 2400, amt: 2400},
-    ];
     useEffect(()=>{
         axios.get(`${BASEURL}/getstats/${gameName}`).then(res=>{
             console.log(res.data)

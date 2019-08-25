@@ -6,25 +6,32 @@ export default class ProgressBar extends Component {
     super(props)
     this.progressInterval=0;
     this._isMounted=false;
+    this.startTime=0;
     this.state = {
        progress: 0
     }
   }
   componentDidMount(){
     this._isMounted=true;
-    this.progressInterval=setInterval(this.updateProgress,this.props.time)
+    this.startTime=Date.now();
+     /* try to update at 60 fps. no requestAnimation frame so it keeps running even if tab is not open */
+    this.progressInterval=setInterval(this.updateProgress,60/1000);
   }
-  componentWillMount(){
+  componentWillUnmount(){
     this._isMounted=false;
     clearInterval(this.progressInterval)
+    console.log(Date.now()-this.startTime);
   }
+
   updateProgress=()=>{
     if(this._isMounted){
-      this.setState({progress: this.state.progress+0.1},
-        ()=>{if(this.state.progress>100){
-          clearInterval(this.progressInterval)
-          this.props.finished()
-        }})
+      if(this.state.progress>100){
+        clearInterval(this.progressInterval)
+        return this.props.finished()
+      }
+      this.setState({
+        progress: ((Date.now()-this.startTime)/(this.props.time*10))
+      })
     }
 
   }
