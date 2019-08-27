@@ -55,10 +55,15 @@ export default class componentName extends Component {
     this.currentRound=1;
     if(this._isMounted){
       this.setState({
+        roundOver: false,
+        saveScore: false,
         number: "",
         showNum: 0,
         numberEntered: "",
-        lifes: 5
+        lifes: 1,
+        score: 0
+      },()=>{
+        this.startRound();
       })
     }
 
@@ -101,7 +106,12 @@ export default class componentName extends Component {
   render() {
     if(this.state.saveScore){
       return (
-        <SaveScore currentPath={this.props.location.pathname} gameName={'number'} gameScore={this.state.score}/>
+        <SaveScore  
+          currentPath={this.props.location.pathname} 
+          gameName={'number'} 
+          gameScore={this.state.score}
+          restart={this.resetGame}
+        />
       )
     }
     return (
