@@ -21,7 +21,8 @@ export default class ReactionClick extends Component {
         this.setState({
             message: 'click when the color changes to green',
             gameState: 0,
-            resetWait: false 
+            resetWait: false ,
+            playing: true
         })
         
             const minWait=timeRange[0] || 0;
@@ -53,12 +54,12 @@ export default class ReactionClick extends Component {
                     message: `good job! your time is: ${reactionTime} ms`,
                     playing: false
                 })
-            }else if(this.state.reaction===0){
+            }else if(this.state.gameState===0){
                 this.setState({
                     resetWait: true,
                     message: `you clicked to early try again! :)`,
                     gameState: 2,
-                    playing: false
+                    /* playing: false */
                 })
             }
         }else{
@@ -72,12 +73,13 @@ export default class ReactionClick extends Component {
         const {message,gameState,playing, reactionTime}=this.state;
         return (
             <>
-                <div onClick={this.checkReaction} style={{backgroundColor:this.colors[gameState]}} className={'clickFastComp centerAll'}>
-                    {playing?
-                        <h1>{message}</h1>:
-                        <SaveScore currentPath={this.props.location.pathname} gameName={'reaction'} gameScore={`${reactionTime} ms`}/>
-                    }
+                {playing?<div onClick={this.checkReaction} style={{backgroundColor:this.colors[gameState]}} className={'clickFastComp centerAll'}>
+                    <h1>{message}</h1>
+                </div>:
+                <div style={{backgroundColor:this.colors[gameState]}} className={'clickFastComp centerAll'}>
+                    <SaveScore restart={()=>this.changeColor([2,6])} currentPath={this.props.location.pathname} gameName={'reaction'} gameScore={`${reactionTime} ms`}/>
                 </div>
+                }
                 <Description
                     header={""}
                     text={""}
