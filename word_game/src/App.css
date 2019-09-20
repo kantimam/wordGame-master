@@ -39,11 +39,20 @@
   align-content: center;
   justify-content: center;
 }
+.flexColumnCenter{
+  /* vertical flex center and avoid some flex side effects */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .marginAuto{
   margin: 0 auto;
 }
 .centerItem{
   margin: auto;
+}
+.noUserSelect{
+  user-select: none;
 }
 .fillContainer{
   width: 100%;

@@ -102,7 +102,7 @@ export default class componentName extends Component {
      */
     return (
         <>
-          <div className={'fullContainer inner gradientBackground noUserSelect'}>
+          <div id="wordGameContainer" className={'fullContainer inner gradientBackground noUserSelect flexColumnCenter'}>
           {this.state.gameOver?
             <SaveScore currentPath={this.props.location.pathname} gameName={'word'} gameScore={this.state.score} restart={this.restartGame}/>:
           <div>

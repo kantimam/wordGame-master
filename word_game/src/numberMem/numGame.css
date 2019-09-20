@@ -57,16 +57,21 @@
 }
 
 .numInput{
+    display: block;
     margin: 0 auto;
     background-color: rgba(0,0,0,0);
     border:none;
-    text-align: center;
+    /* overwrite normal :focus behavior */
+    border: 2px solid white !important;
+    border-radius: 10rem;
     appearance: none;
-    font-size:3rem;
-    width: 100%;
-    color: white;
-    font-weight: bold;
+    width: 80%;
+    font-size: 2.4rem;
+    text-align: center;
 }
+
+
+
 
 #numSubmit{
     display: block;

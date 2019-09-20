@@ -12,7 +12,7 @@ const NumGameInput = ({onSubmit,onChange,inputVal}) => {
             value={inputVal} 
             onChange={onChange} 
             type='number' 
-            placeholder='remember the number?'>
+            /* placeholder='remember the number?' */>
           </input>
 
           <input id='numSubmit' className={'roundedButton hoverPush'} type='submit' value='SEND'/>

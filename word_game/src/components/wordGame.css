@@ -1,47 +1,53 @@
-.fullContainer{
+.fullContainer {
     width: 100%;
-    /* max-width: 36rem; */
     margin: 0 auto;
-    padding: 3rem 0 3rem 0;
-    min-height:16rem;
-    /* border-radius: 1rem; */
+
 }
-.gradientBackground{
+
+#wordGameContainer {
+    padding: 3rem 0 3rem 0;
+    min-height: 24rem;
+}
+
+.gradientBackground {
     background-image: linear-gradient(orange, purple);
     background-size: cover;
 }
-h1{
+
+h1 {
     text-align: center;
 }
-.alignCenter{
+
+.alignCenter {
     text-align: center;
     margin: 0 auto;
 }
-.noUserSelect{
-    user-select: none;
-}
-.roundedButton{
-/*     border-radius: 0.6rem;
- */ outline: none;
-    background-color: rgba(0,0,0,0.1);
+
+.roundedButton {
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.1);
     color: white;
     font-size: 1.2rem;
     border: 0.1rem solid white;
-    width: 46%;
+    /* width: 46%; */
+    min-width: 12rem;
     height: 3rem;
     z-index: 2;
 }
-.hoverPush:hover{
-    background-color: rgba(255,255,255,1) !important;
+
+.hoverPush:hover {
+    background-color: rgba(255, 255, 255, 1) !important;
     color: purple !important;
 }
-#gameButtonContainer{
+
+#gameButtonContainer {
     width: 50%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
 }
-.fullWidthFlex{
+
+.fullWidthFlex {
     font-size: 2rem;
     width: 90%;
     margin: 0 auto;
@@ -49,109 +55,129 @@ h1{
     justify-content: center;
     overflow: hidden;
 }
-.halfWidth{
+
+.halfWidth {
     width: 50%;
     flex-shrink: none;
 }
-.verticalLine{
-    width: 0.1rem;  
+
+.verticalLine {
+    width: 0.1rem;
     margin: 0 1rem 0 1rem;
     background-color: black;
 }
-#maxLivesDiv{
+
+#maxLivesDiv {
     text-align: right;
 }
-#maxScoreDiv{
+
+#maxScoreDiv {
     text-align: left;
 }
+
 @keyframes spawnWord {
     from {
         opacity: 0;
         transform: translateY(-4rem) scale(0.2);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
 }
+
 @keyframes wordLeave {
     from {
         opacity: 1;
         transform: translateY(-4rem) scale(1);
     }
+
     to {
         opacity: 0;
         transform: translateY(1rem) scale(0);
         display: none;
     }
 }
-.wordEnter{
+
+.wordEnter {
     font-size: 3rem;
-    animation: spawnWord 1s 1; 
+    animation: spawnWord 1s 1;
 }
-.wordLeave{
+
+.wordLeave {
     font-size: 3rem;
     transform: translateY(-4rem);
-    animation: wordLeave 1s forwards; 
+    animation: wordLeave 1s forwards;
 }
-.displayContainer{
+
+.displayContainer {
     margin-top: 1rem;
     height: 8rem;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 }
-.displayContainer>h1{
+
+.displayContainer>h1 {
     width: 100%;
     flex-shrink: 0;
     margin: 0 auto;
-    
+
 }
-.fullWidthBlock{
+
+.fullWidthBlock {
     flex-shrink: 0;
     width: 100%;
     height: 3rem;
     margin: 0;
     padding: 0;
 }
-@keyframes fadeIn{
-    0%{
+
+@keyframes fadeIn {
+    0% {
         opacity: 0;
     }
-    100%{
+
+    100% {
         opacity: 1;
     }
 }
-.roundedDiv{
+
+.roundedDiv {
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
     margin: 0 auto;
     cursor: pointer;
     user-select: none;
-    border: 0.2rem solid rgba(80,80,80,0.6);
+    border: 0.2rem solid rgba(80, 80, 80, 0.6);
 }
-.fadeInAnimation{
+
+.fadeInAnimation {
     animation: fadeIn 3s 1;
 }
-.centerText{
+
+.centerText {
     display: flex;
     align-items: center;
 }
-.centerText>i{
+
+.centerText>i {
     font-size: 2.2rem;
     margin: 0 auto;
 }
 
-@media only screen and (min-device-width:320px) and (max-device-width:480px){
-    .fullContainer{
+@media only screen and (min-device-width:320px) and (max-device-width:480px) {
+    .fullContainer {
         width: 100%;
         max-width: 100%;
         border-radius: 0;
     }
 }
-#newGameButton{
-    background-color: rgba(210,220,200,0.1);
+
+#newGameButton {
+    background-color: rgba(210, 220, 200, 0.1);
     outline: none;
     border: 0.1rem solid white;
     color: white;
@@ -160,10 +186,9 @@ h1{
     margin: 0 auto;
     display: flex;
 }
-.flexToCenter{
+
+.flexToCenter {
     height: 16rem;
     display: grid;
     align-items: center;
 }
-
-
