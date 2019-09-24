@@ -6,13 +6,15 @@
 #logSignContainer{
     z-index: 4;
     margin: 0 auto;
-    padding: 1rem 0.5rem 2rem 0.5rem;
+    padding: 2rem 0.5rem 3rem 0.5rem;
     box-sizing: border-box;
-    max-width: 20rem; 
+    max-width: 24rem; 
     /* background-color: rgba(100, 100, 100, 0.5); */
-    background-color: rgb(44, 53, 104);
+    /* background-color: rgb(44, 53, 104); */
     text-align: center;
     color: white;
+    background-image: linear-gradient(darkblue, violet);
+    border-radius: 1rem 1rem 1rem 1rem;
 }
 strong{
     font-weight: bold;
@@ -27,7 +29,7 @@ strong{
     /* border-radius: 0.6rem; */
 }
 .logInForm>input{
-    /* border-radius: 0.4rem; */
+    border-radius: 1rem;
     border: none;
     width: 86%;
     margin: 0.8rem 0 0 0;
@@ -35,11 +37,13 @@ strong{
     height:1.4rem;
 }
 .submitButton{
-    border-radius: 0 !important;
-    background-color: black;
-    color: white;
+    border-radius: 1rem !important;
+    background-color: white;
+    color: black;
     height:2rem !important;
+    margin-top: 1.4rem !important;
     font-size: 1.4rem;
+    max-width: 10rem;
 }
 .logInForm>p{
     margin: 0;
