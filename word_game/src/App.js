@@ -4,7 +4,6 @@ import './App.css';
 import WordGame from './components/WordGame.js'
 import Games from './gameContainer/Games.js'
 import Home from './startpage/Home.js'
-import Stats from './loggedIn/Stats.js'
 import User from './loggedIn/User.js'
 import Navigation from './startpage/Navigation.js'
 import ConfirmComp from './components/ConfirmComp.js'
@@ -59,19 +58,14 @@ const App = () => {
         }
         <Route path='*/login' render={({history})=>
           <FloatingContainer close={history.goBack}>
-            {console.log(history)}
             <LogSign history={history}/>
           </FloatingContainer>
         }/>
 
         <Switch>
-          {/* <Route exact path='/' component={Home}/> */}
-          <Route path='/stats' component={Stats}/>
           <Route path='/user:id' component={User}/>
           <Route path='/games' component={Games}/>
           <Route path='/' component={Home}/>
-          {/* <Route path='/reactiongame' component={ReactionGame}/>
-          <Route path='/numGame' component={NumGame}/> */}
           <Route component={RouteUndef}/>
         </Switch>
     </div>

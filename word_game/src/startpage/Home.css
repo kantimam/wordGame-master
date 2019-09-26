@@ -3,13 +3,6 @@
 } */
 #welcomeBanner{
     flex: 1;
-
-    /* height: 22rem; */
-    display: grid;
-    /* background-image: url('./space.jpg'); */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     background-image: linear-gradient(rgb(28, 115, 228),white);
     padding-top: 3rem;
 }
@@ -24,18 +17,16 @@
     display: grid;
     grid-template-rows: 1fr 1fr;
 }
-#welcomeBanner>div{
+.callToAction{
     text-align: center;
-    align-self: center;
     color: white;
-    text-shadow: 2px 2px 2px black;
     
 }
-#welcomeBanner>div>h1{
+.callToAction>h1{
     margin: 0.4rem;
     font-size: 2.8rem;
 }
-#welcomeBanner>div>p{
+.callToAction>p{
     font-size: 2rem;
     margin: 0;
 }
@@ -63,6 +54,14 @@
 }
 #enterButton{
     margin-top: 2rem !important;
-    text-shadow: none;
     text-decoration: none;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .mainScreen>div{
+        width: 100%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: none;
+    }
+  }

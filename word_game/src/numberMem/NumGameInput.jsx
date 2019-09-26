@@ -4,7 +4,7 @@ const NumGameInput = ({onSubmit,onChange,inputVal}) => {
     return (
         <form 
           /* onSubmit={()=>this.startRound(this.state.number)} */ 
-          className={'marginAuto'}
+          className={'margin0Auto'}
           onSubmit={onSubmit}
         >
           <input

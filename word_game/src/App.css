@@ -32,6 +32,11 @@
   margin-left: auto;
 }
 
+h2, h3{
+  padding: 0;
+  margin: 0;
+}
+
 /* BASE CLASSES */
 .centerAll{
   display: flex;
@@ -45,10 +50,10 @@
   flex-direction: column;
   justify-content: center;
 }
-.marginAuto{
+.margin0Auto{
   margin: 0 auto;
 }
-.centerItem{
+.marginAuto{
   margin: auto;
 }
 .noUserSelect{
@@ -70,6 +75,7 @@
 .noMargin{
   margin: 0;
 }
+
 /* END BASE CLASSES */
 
 
@@ -166,4 +172,9 @@
  
 }
 
+
+.maxWidth60{
+  margin: 0 auto;
+  max-width: 60rem;
+}
 

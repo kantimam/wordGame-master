@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+
+
 
 const GuestTab = () => {
-    return (
-        <div>
+    useEffect(() => {
+    
+        return () => {
             
+        };
+    }, [])
+    return (
+        <div id="guestStatsView" className="statsView">
+            <h2>WELCOME GUEST</h2>
         </div>
     )
 }

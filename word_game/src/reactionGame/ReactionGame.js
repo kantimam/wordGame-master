@@ -95,7 +95,7 @@ export default class componentName extends Component {
   }
   render() {
     return (
-      <div className={'marginAuto maxWidth36 overflowHidden'}>
+      <div className={'margin0Auto maxWidth36 overflowHidden'}>
         <GameUi score={this.state.score} speed={this.state.speed}></GameUi>
         <div id='reactionGame' className={'minHeight24 overflowHidden'}>
           {!this.state.gameRunning && <PreGame startGame={this.startGame}/>}

@@ -1,6 +1,5 @@
 #userContainer{
     width: 100%;
-    text-shadow: none !important;
     /* grid-column: 2/3; */
 }
 #logSignContainer{
@@ -65,3 +64,9 @@ strong{
         height:2.4rem !important;
     }
   }
+
+
+  .statsView{
+      background-color: red;
+  }
+

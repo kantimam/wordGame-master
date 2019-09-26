@@ -5,11 +5,13 @@ import {Link} from 'react-router-dom'
 
 export default () => {
   return (
-    <div id='welcomeBanner'>
-      <div>
+    <div id='welcomeBanner' className="centerAll">
+      <div className={"callToAction"}>
         <div>ICON</div>
         <h1>ARE YOU A GOOD MONKEY?!</h1>
-        <Link id='enterButton' className={'linkButton'} to='/main'><p>ENTER</p></Link>
+        <Link id='enterButton' className={'linkButton'} to='/main'>
+          <p>ENTER</p>
+        </Link>
       </div>
     </div>
   )

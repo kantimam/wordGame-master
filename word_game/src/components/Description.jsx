@@ -21,7 +21,7 @@ const Description = ({header, text, gameName}) => {
         })
     },[])
     return (
-        <div id='descriptionBox' className={'inner marginAuto'}>
+        <div id='descriptionBox' className={'inner margin0Auto'}>
             <section id='descStatsSection'>
                 <h1>STATS</h1>
                 <AreaChart width={500} height={300} data={scores}>
