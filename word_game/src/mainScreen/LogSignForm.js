@@ -68,30 +68,27 @@ const LogSignForm=({history})=> {
   
     return (
       <div id='logSignContainer'>
-        {formMode?
-          <div onClick={()=>setFormMode(0)}>ALREADY HAVE AN ACCOUNT? <strong>LOG IN!</strong></div>:
-          <div onClick={()=>setFormMode(1)}>NO ACCOUNT? <strong>SIGN UP</strong></div>
-        }
+        
         {formMode===0 &&
         <form onSubmit={logIn} className={'logInForm'}>
-          <p>LOG IN</p>
+          <h3>LOG IN</h3>
           <input onChange={onChange} name='email' placeholder='email or username' type='text'></input>
           <input onChange={onChange} name='password' placeholder='password' type='password'></input>
           <input className={'submitButton'} type='submit'></input>        
         </form>}
         {formMode===1 &&
         <form onSubmit={signUp} className={'logInForm'}>
-          <p>SIGN UP</p>
+          <h3>SIGN UP</h3>
           <input onChange={onChange} name='userName' placeholder='username' type='text'></input>
           <input onChange={onChange} name='email' placeholder='email' type='text'></input>
           <input onChange={onChange} name='password' placeholder='password' type='password'></input>
           <input onChange={onChange} name='passwordRe' placeholder='repeat password' type='password'></input>      
           <input className={'submitButton'} type='submit'></input>             
         </form>}
-        {formMode===2 &&
-        <div>
-               
-        </div>}
+        {formMode?
+          <div className="logSignSwitch" onClick={()=>setFormMode(0)}>ALREADY HAVE AN ACCOUNT? <strong>LOG IN!</strong></div>:
+          <div className="logSignSwitch" onClick={()=>setFormMode(1)}>NO ACCOUNT? <strong>SIGN UP</strong></div>
+        }
       </div>
     )
   
