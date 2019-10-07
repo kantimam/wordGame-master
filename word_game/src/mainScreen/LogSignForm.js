@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useStateValue } from '../context/AppContextHook';
 const BASEURL=process.env.REACT_APP_BE_URL;
 
-const LogSignForm=({history})=> {
+const LogSignForm=({currentPath, close})=> {
   
   const [logForm, setLogForm]=useState(
     {
@@ -15,9 +15,15 @@ const LogSignForm=({history})=> {
     }
   )
 
-  const [formMode, setFormMode]=useState(1);
+  const modeFromPath=()=>currentPath.split("/").includes("login")? 0:  1;
+   
+
+  const [formMode, setFormMode]=useState(modeFromPath());
+  const [confirm, setConfirm]=useState({message: `confirmation mail sent to kantemir.imam@gmail.com`});
 
   const [{user}, dispatch ]=useStateValue();
+
+
 
   const onChange=(event)=>{
     const updatedState={...logForm, [event.target.name]: event.target.value}
@@ -33,13 +39,35 @@ const LogSignForm=({history})=> {
 
     axios.post(`${BASEURL}/signup`,formData/* , {withCredentials: true} */).then(res=>{
       console.log(res.data)
-      setFormMode(0)
+      setFormMode(2)
+      setConfirm(res.data);
       //this.props.confirm(res.data.message+res.data.data||`user <${logForm.userName}> created succesfully!`)
     }).catch(error=>{
       console.log(error)
       //this.props.confirm(`SOMETHING WENT WRONG :(`)
     })
   }
+
+  const sendAgain=(event, sendAgainPath)=>{
+    event.preventDefault();
+    axios.get(`${BASEURL}/${sendAgainPath}`).then(res=>{
+      console.log(res.data)
+      setConfirm({...confirm, sent: "WAS SENT"});
+      setTimeout(()=>{
+        const {message, sendAgainPath}=confirm;
+        setConfirm({message, sendAgainPath})
+      },3000);
+    }).catch(error=>{
+      setConfirm({...confirm, sent: "FAILED"});
+      setTimeout(()=>{
+        const {message, sendAgainPath}=confirm;
+        setConfirm({message, sendAgainPath})
+      },3000);
+      console.log(error)
+    })
+  }
+
+
   const logIn=(event)=>{
     event.preventDefault();
     const formData=new FormData();
@@ -57,17 +85,39 @@ const LogSignForm=({history})=> {
           payload: res.data.user
         })
         // get rid of /login and return to prev path
-        history.goBack();
+        close();
       }
     }).catch((error)=>{
       console.log(error)
       //this.props.confirm(`wrong username or password`)
     })
   }
+    if(formMode===2){
+      return(
+        <div className='logSignContainer confirmMail'>
+          <h3>{confirm.message}</h3>
+          <div className={"sendAgain"}>
+            nothing received? 
+            {confirm.sent?
+              <div 
+                id="sendAgainButton" 
+                className={'submitButton'}>
+                {confirm.sent}
+              </div>:
+              <div 
+                onClick={(event)=>sendAgain(event, confirm.sendAgainPath)} 
+                id="sendAgainButton" 
+                className={'submitButton'}>
+                SEND AGAIN
+              </div>
+            }
+          </div>
+        </div>
+      )
+    }
 
-  
     return (
-      <div id='logSignContainer'>
+      <div className='logSignContainer'>
         
         {formMode===0 &&
         <form onSubmit={logIn} className={'logInForm'}>

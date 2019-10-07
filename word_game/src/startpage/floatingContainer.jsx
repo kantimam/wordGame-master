@@ -1,6 +1,6 @@
 import React from 'react'
 import CloseButton from './closeButton.jsx';
-import LogInLink from '../components/LogInLink.jsx';
+/* import LogInLink from '../components/LogInLink.jsx'; */
 
 const floatingContainer = ({children, close}) => {
     const style={
