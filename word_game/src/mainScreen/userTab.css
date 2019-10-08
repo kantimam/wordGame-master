@@ -10,8 +10,8 @@
     max-width: 24rem;
     text-align: center;
     color: white;
-    background-image: linear-gradient(darkblue, violet);
     border-radius: 1rem 1rem 1rem 1rem;
+    box-shadow: 8px 4px 14px 10px rgba(147, 6, 212, 0.699);
 }
 strong{
     color: white;
@@ -65,6 +65,11 @@ strong{
     font-size: 1.8rem !important;
 }
 
+.confirmMail{
+    min-width: 24rem;
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
 
 .sendAgain{
     margin-top: 1.4rem;

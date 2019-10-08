@@ -9,10 +9,6 @@
     min-height: 24rem;
 }
 
-.gradientBackground {
-    background-image: linear-gradient(orange, purple);
-    background-size: cover;
-}
 
 h1 {
     text-align: center;

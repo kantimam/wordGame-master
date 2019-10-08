@@ -38,12 +38,10 @@ const LogSignForm=({currentPath, close})=> {
     formData.set('password',logForm.password)
 
     axios.post(`${BASEURL}/signup`,formData/* , {withCredentials: true} */).then(res=>{
-      console.log(res.data)
       setFormMode(2)
       setConfirm(res.data);
       //this.props.confirm(res.data.message+res.data.data||`user <${logForm.userName}> created succesfully!`)
     }).catch(error=>{
-      console.log(error)
       //this.props.confirm(`SOMETHING WENT WRONG :(`)
     })
   }
@@ -51,19 +49,20 @@ const LogSignForm=({currentPath, close})=> {
   const sendAgain=(event, sendAgainPath)=>{
     event.preventDefault();
     axios.get(`${BASEURL}/${sendAgainPath}`).then(res=>{
-      console.log(res.data)
       setConfirm({...confirm, sent: "WAS SENT"});
+
       setTimeout(()=>{
         const {message, sendAgainPath}=confirm;
         setConfirm({message, sendAgainPath})
       },3000);
+
     }).catch(error=>{
       setConfirm({...confirm, sent: "FAILED"});
+
       setTimeout(()=>{
         const {message, sendAgainPath}=confirm;
         setConfirm({message, sendAgainPath})
       },3000);
-      console.log(error)
     })
   }
 
@@ -88,13 +87,16 @@ const LogSignForm=({currentPath, close})=> {
         close();
       }
     }).catch((error)=>{
-      console.log(error)
+      if(error.response && error.response.status===403){
+        setFormMode(2)
+        setConfirm(error.response.data);
+      }
       //this.props.confirm(`wrong username or password`)
     })
   }
     if(formMode===2){
       return(
-        <div className='logSignContainer confirmMail'>
+        <div className='logSignContainer confirmMail gradientBackground'>
           <h3>{confirm.message}</h3>
           <div className={"sendAgain"}>
             nothing received? 
@@ -117,7 +119,7 @@ const LogSignForm=({currentPath, close})=> {
     }
 
     return (
-      <div className='logSignContainer'>
+      <div className='logSignContainer gradientBackground'>
         
         {formMode===0 &&
         <form onSubmit={logIn} className={'logInForm'}>

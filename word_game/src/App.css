@@ -1,19 +1,20 @@
 
 .topNav{
+  height: 2.8rem;
   z-index: 1;
   position: fixed;
   top: 0;
   width: 100%;
   background-color: rgb(255, 255, 255);
   padding: 0;
-  /* border-bottom: 0.1rem solid rgba(200,200,200,0.6); */
+  background-color: rgba(252, 2, 252, 0.616);
 }
 .navList{
+  height: 100%;
   margin: 0 auto;
   display: flex;
-  /* max-width: 40rem; */
+  align-items: center;
   max-width: 60rem;
-  /* justify-content: space-between; */
   padding: 0 !important;
 }
 .navList>.somePadding, .userInfo>.somePadding{
@@ -21,11 +22,13 @@
   padding: 0.2rem 1rem 0.4rem 1rem;
   cursor: pointer;
 }
-/* .navList>li:first-child{
-  
-} */
+
 .navList>.somePadding:hover,.userInfo>.somePadding:hover{
   background-color: rgba(200,200,200,0.4)
+}
+
+.gamesContainer{
+  padding-top: 2.8rem;
 }
 
 .userInfo{
@@ -78,6 +81,11 @@ h2, h3{
 
 /* END BASE CLASSES */
 
+
+.gradientBackground {
+  background-image: linear-gradient(blue, violet);
+  background-size: cover;
+}
 
 .fullPageContainer{
   height: 100%;
