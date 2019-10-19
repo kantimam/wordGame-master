@@ -5,9 +5,9 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(240, 240, 240);
   padding: 0;
-  background-color: rgba(252, 2, 252, 0.616);
+  /* background-color: rgba(252, 2, 252, 1); */
 }
 .navList{
   height: 100%;

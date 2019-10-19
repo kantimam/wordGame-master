@@ -79,6 +79,26 @@ strong{
     margin: 0.5rem auto 0 auto !important;
 }
 
+.errorMessage{
+    position: absolute;
+    top: 0.4rem;
+    width: calc(100% - 1rem);
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+.animationShake{
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+    0% { transform: translate(2px, 0); }
+    25% { transform: translate(-2px, 0); }
+    50% { transform: translate(2px, 0); }
+    75% { transform: translate(-2px, 0); }
+    100% { transform: translate(2px, 0); }
+  }
+
 @media (min-width: 320px) and (max-width: 480px) {
     .logInForm{
         max-width: 100% !important; 

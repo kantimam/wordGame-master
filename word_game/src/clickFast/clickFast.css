@@ -1,5 +1,6 @@
 .clickFastComp{
-    min-height: 24rem;
+    /* min-height: 24rem; */
+    min-height: 30rem;
     cursor: pointer;
     user-select: none;
 }

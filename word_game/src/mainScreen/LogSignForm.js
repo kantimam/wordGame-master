@@ -23,6 +23,8 @@ const LogSignForm=({currentPath, close})=> {
 
   const [{user}, dispatch ]=useStateValue();
 
+  const [error, setError]=useState("");
+
 
 
   const onChange=(event)=>{
@@ -32,18 +34,25 @@ const LogSignForm=({currentPath, close})=> {
 
   const signUp=(event)=>{
     event.preventDefault();
-    const formData=new FormData();
-    formData.set('userName',logForm.userName)
-    formData.set('email',logForm.email)
-    formData.set('password',logForm.password)
-
-    axios.post(`${BASEURL}/signup`,formData/* , {withCredentials: true} */).then(res=>{
-      setFormMode(2)
-      setConfirm(res.data);
-      //this.props.confirm(res.data.message+res.data.data||`user <${logForm.userName}> created succesfully!`)
-    }).catch(error=>{
-      //this.props.confirm(`SOMETHING WENT WRONG :(`)
-    })
+    if(logForm.password===logForm.passwordRe){
+      const formData=new FormData();
+      formData.set('userName',logForm.userName)
+      formData.set('email',logForm.email)
+      formData.set('password',logForm.password)
+  
+      axios.post(`${BASEURL}/signup`,formData/* , {withCredentials: true} */).then(res=>{
+        setFormMode(2)
+        setConfirm(res.data);
+      }).catch(error=>{
+        setError("something went wrong")
+        setTimeout(()=>setError(""),4000);
+      })
+    }
+    else{
+      setError("please check your password")
+      setTimeout(()=>setError(""),4000);
+    }
+    
   }
 
   const sendAgain=(event, sendAgainPath)=>{
@@ -69,30 +78,32 @@ const LogSignForm=({currentPath, close})=> {
 
   const logIn=(event)=>{
     event.preventDefault();
-    const formData=new FormData();
-    //formData.set('userName',logForm.userName)
-    formData.set('email',logForm.email)
-    formData.set('password',logForm.password)
-    //axios.defaults.withCredentials=true;
-    axios.post(`${BASEURL}/login`,formData, {withCredentials: true}).then(res=>{
-      console.log(res.data)
-      //this.props.confirm(res.data.message||`<${logForm.userName}> logged in!`)
-      //setFormMode(2)
-      if(res.data.user){
-        dispatch({
-          type: 'logIn',
-          payload: res.data.user
-        })
-        // get rid of /login and return to prev path
-        close();
-      }
-    }).catch((error)=>{
-      if(error.response && error.response.status===403){
-        setFormMode(2)
-        setConfirm(error.response.data);
-      }
-      //this.props.confirm(`wrong username or password`)
-    })
+    if(logForm.email.length>2 && logForm.password.length>5){
+      const formData=new FormData();
+      formData.set('email',logForm.email)
+      formData.set('password',logForm.password)
+      axios.post(`${BASEURL}/login`,formData, {withCredentials: true}).then(res=>{
+        console.log(res.data)
+        if(res.data.user){
+          dispatch({
+            type: 'logIn',
+            payload: res.data.user
+          })
+          // get rid of /login and return to prev path
+          close();
+        }
+      }).catch((error)=>{
+        if(error.response && error.response.status===403){
+          setFormMode(2)
+          setConfirm(error.response.data);
+        }
+        else{
+          setError("wrong email or password")
+          setTimeout(()=>setError(""),4000);
+        }
+      })
+    }
+    
   }
     if(formMode===2){
       return(
@@ -119,22 +130,22 @@ const LogSignForm=({currentPath, close})=> {
     }
 
     return (
-      <div className='logSignContainer gradientBackground'>
-        
+      <div className={`logSignContainer gradientBackground ${error? "animationShake":""}`}>
+        {error&&<p className={"errorMessage"}>{error}</p>}
         {formMode===0 &&
         <form onSubmit={logIn} className={'logInForm'}>
           <h3>LOG IN</h3>
-          <input onChange={onChange} name='email' placeholder='email or username' type='text'></input>
-          <input onChange={onChange} name='password' placeholder='password' type='password'></input>
+          <input onChange={onChange} name='email' placeholder='email or username' type='text' minLength="2" required></input>
+          <input onChange={onChange} name='password' placeholder='password' type='password' minLength="6" required></input>
           <input className={'submitButton'} type='submit'></input>        
         </form>}
         {formMode===1 &&
         <form onSubmit={signUp} className={'logInForm'}>
           <h3>SIGN UP</h3>
-          <input onChange={onChange} name='userName' placeholder='username' type='text'></input>
-          <input onChange={onChange} name='email' placeholder='email' type='text'></input>
-          <input onChange={onChange} name='password' placeholder='password' type='password'></input>
-          <input onChange={onChange} name='passwordRe' placeholder='repeat password' type='password'></input>      
+          <input onChange={onChange} name='userName' placeholder='username' type='text' minLength="2" required></input>
+          <input onChange={onChange} name='email' placeholder='email' type='text' minLength="2" required></input>
+          <input onChange={onChange} name='password' placeholder='password' type='password' minLength="6" required></input>
+          <input onChange={onChange} name='passwordRe' placeholder='repeat password' type='password' minLength="6" required></input>      
           <input className={'submitButton'} type='submit'></input>             
         </form>}
         {formMode?
