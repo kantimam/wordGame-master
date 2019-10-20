@@ -74,7 +74,6 @@ const LogSignForm=({currentPath, close})=> {
 
     }).catch(error=>{
       setConfirm({...confirm, sent: "FAILED"});
-
       setTimeout(()=>{
         const {message, sendAgainPath}=confirm;
         setConfirm({message, sendAgainPath})
