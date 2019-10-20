@@ -5,7 +5,14 @@ import { useStateValue } from '../context/AppContextHook';
 const BASEURL=process.env.REACT_APP_BE_URL;
 
 const LogSignForm=({currentPath, close})=> {
-  
+  const modes=Object.freeze({
+    logIn: 0,
+    signUp: 1,
+    confirmMail: 2,
+    resetPassword: 3,
+    createNewPassword: 4
+  })
+
   const [logForm, setLogForm]=useState(
     {
       userName:'',
@@ -15,11 +22,11 @@ const LogSignForm=({currentPath, close})=> {
     }
   )
 
-  const modeFromPath=()=>currentPath.split("/").includes("login")? 0:  1;
+  const modeFromPath=()=>currentPath.split("/").includes("login")? modes.logIn:  modes.signUp;
    
 
   const [formMode, setFormMode]=useState(modeFromPath());
-  const [confirm, setConfirm]=useState({message: `confirmation mail sent to kantemir.imam@gmail.com`});
+  const [confirm, setConfirm]=useState({message: ``});
 
   const [{user}, dispatch ]=useStateValue();
 
@@ -41,7 +48,7 @@ const LogSignForm=({currentPath, close})=> {
       formData.set('password',logForm.password)
   
       axios.post(`${BASEURL}/signup`,formData/* , {withCredentials: true} */).then(res=>{
-        setFormMode(2)
+        setFormMode(modes.confirmMail)
         setConfirm(res.data);
       }).catch(error=>{
         setError("something went wrong")
@@ -83,7 +90,6 @@ const LogSignForm=({currentPath, close})=> {
       formData.set('email',logForm.email)
       formData.set('password',logForm.password)
       axios.post(`${BASEURL}/login`,formData, {withCredentials: true}).then(res=>{
-        console.log(res.data)
         if(res.data.user){
           dispatch({
             type: 'logIn',
@@ -94,7 +100,7 @@ const LogSignForm=({currentPath, close})=> {
         }
       }).catch((error)=>{
         if(error.response && error.response.status===403){
-          setFormMode(2)
+          setFormMode(modes.confirmMail)
           setConfirm(error.response.data);
         }
         else{
@@ -105,7 +111,28 @@ const LogSignForm=({currentPath, close})=> {
     }
     
   }
-    if(formMode===2){
+
+  const resetPassword=(event)=>{
+    event.preventDefault();
+
+    const formData=new FormData();
+      formData.set('email',logForm.email)
+      axios.post(`${BASEURL}/resetpassword`,formData, {withCredentials: true}).then(res=>{
+        console.log(res.data);
+        setConfirm({message: "succesfully sent"})
+        setTimeout(()=>setConfirm({message: ""}),10000);
+      }).catch((error)=>{
+        setError("email not found")
+        setTimeout(()=>setError(""),4000);
+      })
+    
+  }
+
+  const sendNewPassword=()=>{
+
+  }
+
+    if(formMode===modes.confirmMail){
       return(
         <div className='logSignContainer confirmMail gradientBackground'>
           <h3>{confirm.message}</h3>
@@ -132,26 +159,45 @@ const LogSignForm=({currentPath, close})=> {
     return (
       <div className={`logSignContainer gradientBackground ${error? "animationShake":""}`}>
         {error&&<p className={"errorMessage"}>{error}</p>}
-        {formMode===0 &&
+
+        {formMode===modes.logIn &&
         <form onSubmit={logIn} className={'logInForm'}>
           <h3>LOG IN</h3>
-          <input onChange={onChange} name='email' placeholder='email or username' type='text' minLength="2" required></input>
+          <input onChange={onChange} name='email' placeholder='email or username' type='email' minLength="2" required></input>
           <input onChange={onChange} name='password' placeholder='password' type='password' minLength="6" required></input>
+          <div onClick={()=>setFormMode(modes.resetPassword)} className={"resetPassword pointer"}>reset password</div>
           <input className={'submitButton'} type='submit'></input>        
         </form>}
-        {formMode===1 &&
+
+        {formMode===modes.signUp &&
         <form onSubmit={signUp} className={'logInForm'}>
           <h3>SIGN UP</h3>
           <input onChange={onChange} name='userName' placeholder='username' type='text' minLength="2" required></input>
-          <input onChange={onChange} name='email' placeholder='email' type='text' minLength="2" required></input>
+          <input onChange={onChange} name='email' placeholder='email' type='email' minLength="2" required></input>
           <input onChange={onChange} name='password' placeholder='password' type='password' minLength="6" required></input>
           <input onChange={onChange} name='passwordRe' placeholder='repeat password' type='password' minLength="6" required></input>      
           <input className={'submitButton'} type='submit'></input>             
         </form>}
-        {formMode?
-          <div className="logSignSwitch" onClick={()=>setFormMode(0)}>ALREADY HAVE AN ACCOUNT? <strong>LOG IN!</strong></div>:
-          <div className="logSignSwitch" onClick={()=>setFormMode(1)}>NO ACCOUNT? <strong>SIGN UP</strong></div>
-        }
+
+        {formMode===modes.resetPassword &&
+        <form onSubmit={resetPassword} className={'logInForm'}>
+          <h3>{confirm.message || "SEND RESET LINK TO"}</h3>
+          <input onChange={onChange} name='email' placeholder='email or username' type='email' minLength="2" required></input>
+          <input className={'submitButton'} type='submit' value="SEND"></input>        
+        </form>}
+
+        {formMode===modes.createNewPassword &&
+        <form onSubmit={sendNewPassword} className={'logInForm'}>
+          <h3>CREATE NEW PASSWORD</h3>
+          <input onChange={onChange} name='userName' placeholder='username' type='text' minLength="2" required></input>
+          <input onChange={onChange} name='email' placeholder='email' type='email' minLength="2" required></input>
+          <input onChange={onChange} name='password' placeholder='password' type='password' minLength="6" required></input>
+          <input onChange={onChange} name='passwordRe' placeholder='repeat password' type='password' minLength="6" required></input>      
+          <input className={'submitButton'} type='submit'></input>        
+        </form>}
+        
+        {formMode===modes.signUp&&<div className="logSignSwitch" onClick={()=>setFormMode(modes.logIn)}>ALREADY HAVE AN ACCOUNT? <strong>LOG IN!</strong></div>}
+        {formMode===modes.logIn&&<div className="logSignSwitch" onClick={()=>setFormMode(modes.signUp)}>NO ACCOUNT? <strong>SIGN UP</strong></div>}
       </div>
     )
   
