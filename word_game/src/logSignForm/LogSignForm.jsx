@@ -2,6 +2,12 @@ import React, { useState } from 'react'
 import './userTab.css'
 import axios from 'axios'
 import { useStateValue } from '../context/AppContextHook';
+import LogInForm from './logInForm.jsx';
+import SignUpForm from './signUpForm.jsx';
+import ConfirmMailForm from './confirmMailForm.jsx';
+import ResetPasswordForm from './resetPasswordForm.jsx';
+import NewPasswordForm from './newPasswordForm.jsx';
+import confirmMailForm from './confirmMailForm.jsx';
 const BASEURL=process.env.REACT_APP_BE_URL;
 
 const LogSignForm=({currentPath, close})=> {
@@ -132,71 +138,21 @@ const LogSignForm=({currentPath, close})=> {
   }
 
     if(formMode===modes.confirmMail){
-      return(
-        <div className='logSignContainer confirmMail gradientBackground'>
-          <h3>{confirm.message}</h3>
-          <div className={"sendAgain"}>
-            nothing received? 
-            {confirm.sent?
-              <div 
-                id="sendAgainButton" 
-                className={'submitButton'}>
-                {confirm.sent}
-              </div>:
-              <div 
-                onClick={(event)=>sendAgain(event, confirm.sendAgainPath)} 
-                id="sendAgainButton" 
-                className={'submitButton'}>
-                SEND AGAIN
-              </div>
-            }
-          </div>
-        </div>
-      )
+      return <confirmMailForm sendAgain={sendAgain} confirm={confirm}/>
     }
 
     return (
       <div className={`logSignContainer gradientBackground ${error? "animationShake":""}`}>
         {error&&<p className={"errorMessage"}>{error}</p>}
 
-        {formMode===modes.logIn &&
-        <form onSubmit={logIn} className={'logInForm'}>
-          <h3>LOG IN</h3>
-          <input onChange={onChange} name='email' placeholder='email or username' type='email' minLength="2" required></input>
-          <input onChange={onChange} name='password' placeholder='password' type='password' minLength="6" required></input>
-          <div onClick={()=>setFormMode(modes.resetPassword)} className={"resetPassword pointer"}>reset password</div>
-          <input className={'submitButton'} type='submit'></input>        
-        </form>}
+        {formMode===modes.logIn && <LogInForm onSubmit={logIn} onChange={onChange} resetPassword={()=>setFormMode(modes.resetPassword)} signUp={()=>setFormMode(modes.signUp)}/>}
 
-        {formMode===modes.signUp &&
-        <form onSubmit={signUp} className={'logInForm'}>
-          <h3>SIGN UP</h3>
-          <input onChange={onChange} name='userName' placeholder='username' type='text' minLength="2" required></input>
-          <input onChange={onChange} name='email' placeholder='email' type='email' minLength="2" required></input>
-          <input onChange={onChange} name='password' placeholder='password' type='password' minLength="6" required></input>
-          <input onChange={onChange} name='passwordRe' placeholder='repeat password' type='password' minLength="6" required></input>      
-          <input className={'submitButton'} type='submit'></input>             
-        </form>}
+        {formMode===modes.signUp && <SignUpForm onSubmit={signUp} onChange={onChange} logIn={()=>setFormMode(modes.logIn)}/>}
 
-        {formMode===modes.resetPassword &&
-        <form onSubmit={resetPassword} className={'logInForm'}>
-          <h3>{confirm.message || "SEND RESET LINK TO"}</h3>
-          <input onChange={onChange} name='email' placeholder='email or username' type='email' minLength="2" required></input>
-          <input className={'submitButton'} type='submit' value="SEND"></input>        
-        </form>}
+        {formMode===modes.resetPassword && <ResetPasswordForm onSubmit={resetPassword} onChange={onChange} confirmStatus={confirm.message}/>}
 
-        {formMode===modes.createNewPassword &&
-        <form onSubmit={sendNewPassword} className={'logInForm'}>
-          <h3>CREATE NEW PASSWORD</h3>
-          <input onChange={onChange} name='userName' placeholder='username' type='text' minLength="2" required></input>
-          <input onChange={onChange} name='email' placeholder='email' type='email' minLength="2" required></input>
-          <input onChange={onChange} name='password' placeholder='password' type='password' minLength="6" required></input>
-          <input onChange={onChange} name='passwordRe' placeholder='repeat password' type='password' minLength="6" required></input>      
-          <input className={'submitButton'} type='submit'></input>        
-        </form>}
+        {formMode===modes.createNewPassword && <NewPasswordForm onChange={onChange} onSubmit={sendNewPassword}/>}
         
-        {formMode===modes.signUp&&<div className="logSignSwitch" onClick={()=>setFormMode(modes.logIn)}>ALREADY HAVE AN ACCOUNT? <strong>LOG IN!</strong></div>}
-        {formMode===modes.logIn&&<div className="logSignSwitch" onClick={()=>setFormMode(modes.signUp)}>NO ACCOUNT? <strong>SIGN UP</strong></div>}
       </div>
     )
   

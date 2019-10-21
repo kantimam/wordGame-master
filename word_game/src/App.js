@@ -7,10 +7,8 @@ import Home from './startpage/Home.js'
 import User from './loggedIn/User.js'
 import Navigation from './startpage/Navigation.js'
 import ConfirmComp from './components/ConfirmComp.js'
-/* import ReactionGame from './reactionGame/ReactionGame.js' */
-/* import NumGame from './numberMem/NumGame.js' */
 import FloatingContainer from './startpage/floatingContainer.jsx';
-import LogSign from './mainScreen/LogSignForm.js';
+import LogSign from './logSignForm/LogSignForm';
 import RouteUndef from './components/RouteUndef.js'
 import { useStateValue } from './context/AppContextHook';
 
