@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+import UserStats from '../mainScreen/UserStats.jsx';
 
 
 const GuestTab = () => {
@@ -11,7 +11,10 @@ const GuestTab = () => {
     }, [])
     return (
         <div id="guestStatsView" className="statsView">
-            <h2>WELCOME GUEST</h2>
+            <div className={"welcomeUser centerAll"}>
+                <h2>WELCOME GUEST</h2>
+            </div>
+            <UserStats/>
         </div>
     )
 }

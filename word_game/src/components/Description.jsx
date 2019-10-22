@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './description.css'
 import axios from 'axios'
-import { AreaChart, Area, /* Line, */ CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import StatsChart from './statsChart.jsx';
 const BASEURL=process.env.REACT_APP_BE_URL;
 
 const Description = ({header, text, gameName}) => {
@@ -24,13 +24,7 @@ const Description = ({header, text, gameName}) => {
         <div id='descriptionBox' className={'inner margin0Auto'}>
             <section id='descStatsSection'>
                 <h1>STATS</h1>
-                <AreaChart width={500} height={300} data={scores}>
-                    <Area type="monotone" dataKey="percent" stroke="#8884d8" />
-                    <CartesianGrid stroke="#ccc" />
-                    <XAxis dataKey="score" />
-                    <YAxis /* dataKey="percent" */ />
-                    <Tooltip />
-                </AreaChart>
+                <StatsChart data={scores}/>
             </section>
             <section id='descInfoSection'>
                 <h1>

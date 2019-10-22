@@ -9,10 +9,7 @@ import MainScreen from '../mainScreen/MainScreen.js'
 const Home = () => {
   return (
     <div className={'spaceBgFull- horizontalGrid- fullPageContainer'}>
-      <Switch>
-        <Route path='/main' render={()=><MainScreen/>}/>
-        <Route path='/' component={WelcomeBanner}/>
-      </Switch>
+      <WelcomeBanner/>
       <div id='GameOverview' className={'fullContainer maxWidth60'}>
         <div className={'fourPartGrid'}>
           <Link className={'boxLink undecoratedLink'} to='./games/wordgame'>
