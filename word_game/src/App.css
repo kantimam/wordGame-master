@@ -69,6 +69,9 @@ h2, h3{
 .textCenter{
   text-align: center;
 }
+.textLeft{
+  text-align: left;
+}
 .mainHover:hover{
   color: blue;
 }

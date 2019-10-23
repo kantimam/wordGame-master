@@ -7,7 +7,6 @@ import SignUpForm from './signUpForm.jsx';
 import ConfirmMailForm from './confirmMailForm.jsx';
 import ResetPasswordForm from './resetPasswordForm.jsx';
 import NewPasswordForm from './newPasswordForm.jsx';
-import confirmMailForm from './confirmMailForm.jsx';
 const BASEURL=process.env.REACT_APP_BE_URL;
 
 const LogSignForm=({currentPath, close})=> {
@@ -138,7 +137,9 @@ const LogSignForm=({currentPath, close})=> {
   }
 
     if(formMode===modes.confirmMail){
-      return <confirmMailForm sendAgain={sendAgain} confirm={confirm}/>
+      return (
+        <ConfirmMailForm sendAgain={sendAgain} confirm={confirm}/>
+      )
     }
 
     return (

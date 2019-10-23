@@ -1,17 +1,21 @@
-.mainScreen{
-    padding-top: 3rem;
-    /* height: 100%; */
-    background-color: lightcyan;
-}
-
-
-
 .welcomeUser{
     min-height: 14rem;
-    background-color: lightslategray;
 }
 
 .topScore{
     min-height: 16rem;
-    background-color: lightpink;
+}
+
+.statsHeader{
+    margin: 0.2rem 0 0 0;
+}
+
+
+.statsWrapperOuter{
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.statsWrapperInner{
+    transform: translateX(-1.5rem);
 }

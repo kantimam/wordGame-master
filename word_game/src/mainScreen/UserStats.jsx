@@ -6,15 +6,15 @@ const UserStats = () => {
     const [selectedGame, setGame]=useState("word")
 
     return (
-        <div>
+        <>
             <select onChange={(event)=>setGame(event.target.value)}>
                 <option value="word">word memory</option>
                 <option value="number">number memory</option>
                 <option value="reaction">reaction time</option>
             </select>
-            <TopScore/>
+            <TopScore gameName={selectedGame}/>
             <StatsChart gameName={selectedGame}/>
-        </div>
+        </>
     )
 }
 

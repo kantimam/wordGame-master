@@ -29,8 +29,10 @@ const statsChartWrapper = ({gameName}) => {
         })
     },[gameName])
     return (
-        <div ref={containerRef}>
-            {chartWidth && <StatsChart data={scores} width={chartWidth}/>}
+        <div ref={containerRef} className={"statsWrapperOuter"}>
+            <div className={"statsWrapperInner"}>
+                {chartWidth && <StatsChart data={scores} width={chartWidth}/>}
+            </div>
         </div>
     )
 }
