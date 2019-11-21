@@ -12,10 +12,10 @@ const userInfo = ({currentPath}) => {
             if(currentPath.split('/').includes('login')){
                 return currentPath;
             }else{
-                return `${currentPath}/login`;
+                return `${currentPath}/account/login`;
             }
         }else{
-            return '/login';
+            return '/account/login';
         }
     }
 

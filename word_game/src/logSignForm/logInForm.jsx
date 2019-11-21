@@ -1,7 +1,9 @@
 import React from 'react'
 import './userTab.css'
+import {useHistory} from "react-router-dom"
 
 const logInForm = ({onChange, onSubmit, resetPassword, signUp}) => {
+    const {push}=useHistory();
     return (
         <>
             <form onSubmit={onSubmit} className={'logInForm'}>
@@ -11,7 +13,7 @@ const logInForm = ({onChange, onSubmit, resetPassword, signUp}) => {
                 <div onClick={resetPassword} className={"resetPassword pointer"}>reset password</div>
                 <input className={'submitButton'} type='submit'></input>        
             </form>
-            <div className="logSignSwitch" onClick={signUp}>NO ACCOUNT? <strong>SIGN UP</strong></div>
+            <div className="logSignSwitch" onClick={()=>push("signup")}>NO ACCOUNT? <strong className="customLink">SIGN UP</strong></div>
         </>
     )
 }

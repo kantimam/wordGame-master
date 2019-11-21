@@ -2,13 +2,18 @@ import React from 'react'
 
 const TopScore = ({gameName}) => {
     const gameNamesData={
-        word: "word memory",
+        word: "Word Memory",
         number: "number memory",
-        reaction: "reaction time"
+        reaction: "Reaction Time"
     }
     return (
-        <div className={"topScore"}>
-            <h1 className="statsHeader">top {gameNamesData[gameName]} score</h1>
+        <div className={"topScore textCenter card"}>
+            <h3 className="statsHeader">{gameNamesData[gameName]}</h3>
+            <div>
+                <h1>34</h1>
+                <p>words</p>
+                <p>Top <strong>{}%</strong></p>  
+            </div>
         </div>
     )
 }

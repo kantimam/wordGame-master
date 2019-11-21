@@ -13,7 +13,9 @@
     border-radius: 1rem 1rem 1rem 1rem;
     box-shadow: 8px 4px 14px 10px rgba(147, 6, 212, 0.699);
 }
-strong{
+
+
+.customLink{
     color: white;
     font-weight: bold;
     font-size: 1.2rem;

@@ -1,6 +1,9 @@
 import React from 'react'
+import {useHistory} from "react-router-dom"
 
 const signUpForm = ({onChange, onSubmit, logIn}) => {
+    const {push}=useHistory();
+
     return (
         <>
             <form onSubmit={onSubmit} className={'logInForm'}>
@@ -11,7 +14,7 @@ const signUpForm = ({onChange, onSubmit, logIn}) => {
                 <input onChange={onChange} name='passwordRe' placeholder='repeat password' type='password' minLength="6" required></input>      
                 <input className={'submitButton'} type='submit'></input>             
             </form>
-            <div className="logSignSwitch" onClick={logIn}>ALREADY HAVE AN ACCOUNT? <strong>LOG IN!</strong></div>
+            <div className="logSignSwitch" onClick={()=>push("login")}>ALREADY HAVE AN ACCOUNT? <strong className="customLink">LOG IN!</strong></div>
         </>
     )
 }

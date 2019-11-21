@@ -44,9 +44,8 @@ const App = () => {
   },[user])
 
   const closeLogIn=(history)=>{
-    /* if path contains login or signup return the path without it */
-    let removeLogIn=history.location.pathname.split("/").filter(item=>(item!=="login" && item!=="signup")).join("/");
-    history.push(removeLogIn || "/")
+    const removeAccountModal=history.location.pathname.split("/account");
+    history.push(removeAccountModal[0] || "/")
   }
 
   return (
@@ -58,10 +57,10 @@ const App = () => {
             close={"()=>this.setState({confirmOpen: false})"}
           />
         }
-        <Route path='*/(login|signup)/' render={({history})=>
+        <Route path='*/account' render={({history})=>
           <FloatingContainer close={()=>closeLogIn(history)}>
             <LogSign 
-              currentPath={history.location.pathname}
+              history={history}
               close={()=>closeLogIn(history)}
             />
           </FloatingContainer>

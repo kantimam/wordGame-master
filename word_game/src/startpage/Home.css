@@ -3,7 +3,7 @@
 } */
 #welcomeBanner{
     flex: 1;
-    background-image: linear-gradient(rgb(28, 115, 228),white);
+    /* background-image: linear-gradient(rgb(28, 115, 228),white); */
     padding-top: 3rem;
 }
 .spaceBgFull{
@@ -19,7 +19,7 @@
 }
 .callToAction{
     text-align: center;
-    color: white;
+    /* color: white; */
     
 }
 .callToAction>h1{
@@ -38,8 +38,10 @@
     height: 2.8rem;
     /* border-radius: 0.4rem; */
     margin: 0 auto;
-    background-color: rgba(100,100,100,0.4);
-    border: 0.1rem solid black;
+    /* background-color: rgba(100,100,100,0.4);
+    border: 0.1rem solid black; */
+
+    background-color: violet;
     color: black;
 }
 .linkButton>p{

@@ -7,16 +7,10 @@ import SignUpForm from './signUpForm.jsx';
 import ConfirmMailForm from './confirmMailForm.jsx';
 import ResetPasswordForm from './resetPasswordForm.jsx';
 import NewPasswordForm from './newPasswordForm.jsx';
+import {Route, Switch} from 'react-router'
 const BASEURL=process.env.REACT_APP_BE_URL;
 
-const LogSignForm=({currentPath, close})=> {
-  const modes=Object.freeze({
-    logIn: 0,
-    signUp: 1,
-    confirmMail: 2,
-    resetPassword: 3,
-    createNewPassword: 4
-  })
+const LogSignForm=({close})=> {
 
   const [logForm, setLogForm]=useState(
     {
@@ -27,17 +21,16 @@ const LogSignForm=({currentPath, close})=> {
     }
   )
 
-  const modeFromPath=()=>currentPath.split("/").includes("login")? modes.logIn:  modes.signUp;
    
 
-  const [formMode, setFormMode]=useState(modeFromPath());
+  const [confirmMail, setConfirmMail]=useState(false);
   const [confirm, setConfirm]=useState({message: ``});
 
-  const [{user}, dispatch ]=useStateValue();
+  const [, dispatch ]=useStateValue();
 
   const [error, setError]=useState("");
 
-
+  
 
   const onChange=(event)=>{
     const updatedState={...logForm, [event.target.name]: event.target.value}
@@ -53,7 +46,7 @@ const LogSignForm=({currentPath, close})=> {
       formData.set('password',logForm.password)
   
       axios.post(`${BASEURL}/signup`,formData/* , {withCredentials: true} */).then(res=>{
-        setFormMode(modes.confirmMail)
+        setConfirmMail(true)
         setConfirm(res.data);
       }).catch(error=>{
         setError("something went wrong")
@@ -104,7 +97,7 @@ const LogSignForm=({currentPath, close})=> {
         }
       }).catch((error)=>{
         if(error.response && error.response.status===403){
-          setFormMode(modes.confirmMail)
+          setConfirmMail(true)
           setConfirm(error.response.data);
         }
         else{
@@ -136,7 +129,7 @@ const LogSignForm=({currentPath, close})=> {
 
   }
 
-    if(formMode===modes.confirmMail){
+    if(confirmMail){
       return (
         <ConfirmMailForm sendAgain={sendAgain} confirm={confirm}/>
       )
@@ -145,15 +138,12 @@ const LogSignForm=({currentPath, close})=> {
     return (
       <div className={`logSignContainer gradientBackground ${error? "animationShake":""}`}>
         {error&&<p className={"errorMessage"}>{error}</p>}
-
-        {formMode===modes.logIn && <LogInForm onSubmit={logIn} onChange={onChange} resetPassword={()=>setFormMode(modes.resetPassword)} signUp={()=>setFormMode(modes.signUp)}/>}
-
-        {formMode===modes.signUp && <SignUpForm onSubmit={signUp} onChange={onChange} logIn={()=>setFormMode(modes.logIn)}/>}
-
-        {formMode===modes.resetPassword && <ResetPasswordForm onSubmit={resetPassword} onChange={onChange} confirmStatus={confirm.message}/>}
-
-        {formMode===modes.createNewPassword && <NewPasswordForm onChange={onChange} onSubmit={sendNewPassword}/>}
-        
+        <Switch>
+          <Route path="*/login" render={()=><LogInForm onSubmit={logIn} onChange={onChange} />}/>
+          <Route path="*/signup" render={()=><SignUpForm onSubmit={signUp} onChange={onChange}/>}/>
+          <Route path="*/resetpassword" render={()=><ResetPasswordForm onSubmit={resetPassword} onChange={onChange} confirmStatus={confirm.message}/>}/>
+          <Route path="*/newpassword" render={()=><NewPasswordForm onChange={onChange} onSubmit={sendNewPassword}/>}/>
+        </Switch>
       </div>
     )
   

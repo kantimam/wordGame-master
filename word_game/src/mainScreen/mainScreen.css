@@ -1,10 +1,27 @@
+h1, h3, p{
+    margin: 0;
+    padding: 0;
+}
+
+.mainScreein>h1{
+    margin: 0;
+    padding: 0;
+    font-size: 3rem;
+}
+.card{
+    border-radius: 0.8rem;
+    background-color: lightgrey;
+}
+
+
 .welcomeUser{
     min-height: 14rem;
 }
 
 .topScore{
-    min-height: 16rem;
+    padding: 2rem 0;
 }
+
 
 .statsHeader{
     margin: 0.2rem 0 0 0;
