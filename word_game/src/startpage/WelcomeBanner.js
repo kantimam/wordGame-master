@@ -10,7 +10,7 @@ export default () => {
         <div>ICON</div>
         <h1>ARE YOU A GOOD MONKEY?!</h1>
         <Link id='enterButton' className={'linkButton'} to='/main'>
-          <p>ENTER</p>
+          ENTER
         </Link>
       </div>
     </div>

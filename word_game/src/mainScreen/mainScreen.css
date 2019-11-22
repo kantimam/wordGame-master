@@ -23,11 +23,17 @@ h1, h3, p{
 }
 
 .welcomeUser{
+    padding-top: 2.8rem;
     min-height: 14rem;
 }
 
 .topScore{
-    padding: 2rem 0;
+    padding: 3rem 0;
+}
+
+.topScore>.linkButton{
+    margin-top: 1rem;
+    
 }
 
 
@@ -37,7 +43,7 @@ h1, h3, p{
 
 
 .statsWrapperOuter{
-    margin-top: 2rem;
+    margin-top: 3rem;
     width: 100%;
 }
 

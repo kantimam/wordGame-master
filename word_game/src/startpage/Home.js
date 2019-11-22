@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
-import {Link, Switch, Route} from 'react-router-dom'
+import React from 'react'
+import {Link} from 'react-router-dom'
 import CenteredIcon from '../CenteredIcon';
 import './Home.css'
 import WelcomeBanner from './WelcomeBanner';
-import MainScreen from '../mainScreen/MainScreen.js'
 
 
 const Home = () => {

@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from 'react'
-import axios from 'axios'
+import React, { useState, useLayoutEffect, useRef } from 'react'
 import StatsChart from '../components/statsChart.jsx';
 const BASEURL = process.env.REACT_APP_BE_URL;
 
-const statsChartWrapper = ({ gameName }) => {
-    const [scores, setScores] = useState([])
+const statsChartWrapper = ({ scores }) => {
     const [chartWidth, setChartWidth] = useState(null);
     const containerRef = useRef();
 
@@ -18,19 +16,6 @@ const statsChartWrapper = ({ gameName }) => {
     }, [])
 
 
-
-    useEffect(() => {
-        axios.get(`${BASEURL}/getstats/${gameName}`).then(res => {
-            let scoreArr = []
-            for (let key in res.data) {
-                scoreArr.push({
-                    score: key,
-                    percent: res.data[key]
-                })
-            }
-            setScores(scoreArr)
-        })
-    }, [gameName])
     return (
         <div ref={containerRef} className={"statsWrapperOuter"}>
             <div className={"statsWrapperInner"}>
