@@ -1,23 +1,11 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {useLocation, Link} from 'react-router-dom'
 import { useStateValue } from '../context/AppContextHook';
 
 
-const userInfo = ({currentPath}) => {
-    
+const userInfo = () => {
+    const {pathname}=useLocation()
     const [{user, loggedIn}, dispatch]=useStateValue();
-
-    const getLink=(currentPath)=>{
-        if(currentPath!=='/'){
-            if(currentPath.split('/').includes('login')){
-                return currentPath;
-            }else{
-                return `${currentPath}/account/login`;
-            }
-        }else{
-            return '/account/login';
-        }
-    }
 
     return (
         <div className={'centerAll userInfo'}>
@@ -28,7 +16,7 @@ const userInfo = ({currentPath}) => {
                     </p>
                     welcome {user.name}
                 </div>:
-                <Link className={'somePadding undecoratedLink'} to={getLink(currentPath)}>LOG IN</Link>
+                <Link className={'somePadding undecoratedLink'} to={pathname==="/"?"/account/login":`${pathname}/account/login`}>LOG IN</Link>
             }
         </div>
     )

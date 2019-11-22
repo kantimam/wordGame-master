@@ -77,7 +77,7 @@ export default class ReactionClick extends Component {
                     <h1>{message}</h1>
                 </div>:
                 <div style={{backgroundColor:this.colors[gameState]}} className={'clickFastComp centerAll'}>
-                    <SaveScore restart={()=>this.changeColor([2,6])} currentPath={this.props.location.pathname} gameName={'reaction'} gameScore={`${reactionTime} ms`}/>
+                    <SaveScore restart={()=>this.changeColor([2,6])} currentPath={this.props.location.pathname} gameName={'reaction'} gameScore={reactionTime} unit={"ms"}/>
                 </div>
                 }
                 <Description

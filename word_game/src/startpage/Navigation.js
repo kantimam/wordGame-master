@@ -3,7 +3,7 @@ import UserInfo from './userInfo';
 import {Link} from 'react-router-dom';
 
 
-const Navigation = ({location}) => {
+const Navigation = () => {
 
   return (
     <nav className={'topNav'}>
@@ -11,7 +11,7 @@ const Navigation = ({location}) => {
           <Link className={'somePadding undecoratedLink'} to='/'>GAMES</Link>
           <Link className={'somePadding undecoratedLink'} to='/'>ABOUT</Link>
           <Link className={'somePadding undecoratedLink'} to='/'>CONTACT</Link>
-          <UserInfo currentPath={location.pathname}/>
+          <UserInfo/>
       </ul>
     </nav>
   )

@@ -8,7 +8,6 @@ const Description = ({header, text, gameName}) => {
     const [scores, setScores]=useState([])
     useEffect(()=>{
         axios.get(`${BASEURL}/getstats/${gameName}`).then(res=>{
-            console.log(res.data)
             let scoreArr=[]
             for(let key in res.data){
                 scoreArr.push({
@@ -17,7 +16,6 @@ const Description = ({header, text, gameName}) => {
                 })
             }
             setScores(scoreArr)
-            console.log(scoreArr)
         })
     },[])
     return (
