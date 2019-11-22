@@ -11,8 +11,16 @@ h1, h3, p{
 .card{
     border-radius: 0.8rem;
     background-color: lightgrey;
+    
+}
+.userStatsWrapper{
+    margin: 0 auto;
+    max-width: 94%;
 }
 
+.statsView{
+    margin: 0 auto;
+}
 
 .welcomeUser{
     min-height: 14rem;

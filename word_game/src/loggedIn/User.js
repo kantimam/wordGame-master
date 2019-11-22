@@ -12,7 +12,7 @@ const User = () => {
   }, [])
   return (
     <div id="guestStatsView" className="statsView">
-      <h2>WELCOME GUEST</h2>
+      <h2>WELCOME USER</h2>
     </div>
   )
 }

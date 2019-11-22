@@ -6,7 +6,7 @@ const UserStats = () => {
     const [selectedGame, setGame]=useState("word")
 
     return (
-        <>
+        <div className="userStatsWrapper">
             <select onChange={(event)=>setGame(event.target.value)}>
                 <option value="word">word memory</option>
                 <option value="number">number memory</option>
@@ -14,7 +14,7 @@ const UserStats = () => {
             </select>
             <TopScore gameName={selectedGame}/>
             <StatsChart gameName={selectedGame}/>
-        </>
+        </div>
     )
 }
 
