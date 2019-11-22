@@ -1,6 +1,5 @@
 import React, { useState, useLayoutEffect, useRef } from 'react'
 import StatsChart from '../components/statsChart.jsx';
-const BASEURL = process.env.REACT_APP_BE_URL;
 
 const statsChartWrapper = ({ scores }) => {
     const [chartWidth, setChartWidth] = useState(null);

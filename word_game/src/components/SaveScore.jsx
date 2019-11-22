@@ -31,37 +31,49 @@ const SaveScore = ({ gameName, gameScore, unit, currentPath, restart }) => {
         } else console.log("your current score is higher")
 
     }
+
+    const setGuestScore = (event) => {
+        event.preventDefault();
+        dispatch({
+            type: 'setScore',
+            target: gameName,
+            payload: gameScore
+        })
+        setSendState(2);
+    }
+
     const scoreImproved = () => {
-        console.log(gameName, gameScore)
-        if (user.scores[gameName]) {
-            if (gameName === "reaction") return (user.scores[gameName] > gameScore)
-            return (user.scores[gameName] < gameScore)
-        }
-    };
+        if(user){
+            if (user.scores[gameName]) {
+                if (gameName === "reaction") return (user.scores[gameName] > gameScore)
+                return (user.scores[gameName] < gameScore)
+            }return true;
+        }return false;   
+    }
 
     const stateGameScore = user.scores && user.scores[gameName] ? user.scores[gameName] : 0;
     return (
         <div className={'saveScore'}>
-            {
-                loggedIn ?
-                    !sendState ?
-                        <>
-                            <h1 className={'fadeIn saveScoreAnim1'}>{'score: ' + gameScore}{unit}</h1>
-                            <h1 style={{ marginBottom: "1.4rem" }} className={'fadeIn saveScoreAnim2'}>your current high score: {stateGameScore}{unit}</h1>
-                            {scoreImproved() && <button className={'fadeIn saveScoreAnim3 roundedButton hoverPush'} onClick={sendScore}>
-                                SEND
-                            </button>}
-                        </> :
-                        <h1 className={'fadeIn saveScoreAnim3'}>{sendState > 1 ? "SUCESFULLY SEND YOUR SCORE" : "SOMETHING WENT WRONG"}</h1> :
-                    <>
-                        <LogInLink currentPath={currentPath} />
-                        <h1 className={'fadeIn saveScoreAnim1'}>{'score: ' + gameScore}</h1>
-                    </>
+            {!sendState ?
+                <>
+                    <h1 className={'fadeIn saveScoreAnim1'}>{'score: ' + gameScore}{unit}</h1>
+                    <h1 style={{ marginBottom: "1.4rem" }} className={'fadeIn saveScoreAnim2'}>your current high score: {stateGameScore}{unit}</h1>
+                    {scoreImproved() &&
+                        <button className={'fadeIn saveScoreAnim3 roundedButton hoverPush'} onClick={loggedIn ? sendScore : setGuestScore}>
+                            SEND
+                        </button>}
+                </> :
+
+                <h1 className={'fadeIn saveScoreAnim3'}>
+                    {sendState > 1 ? "SUCESFULLY SEND YOUR SCORE" : "SOMETHING WENT WRONG"}
+                </h1>
+
 
             }
             <button onClick={restart} style={{ marginTop: '2rem' }} className={'roundedButton hoverPush fadeIn saveScoreAnim4'}>
                 TRY AGAIN
             </button>
+            {!loggedIn && <LogInLink currentPath={currentPath} />}
         </div>
     )
 

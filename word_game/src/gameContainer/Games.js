@@ -1,6 +1,5 @@
 import React from 'react'
 import WordGame from '../components/WordGame.js'
-import ReactionGame from '../reactionGame/ReactionGame.js'
 import ReactionClick from '../clickFast/ReactionClick'
 import NumGame from '../numberMem/NumGame.js'
 import {Switch, Route} from 'react-router-dom';
@@ -14,7 +13,6 @@ const Games = () => {
                 <Switch>
                     <Route path='/games/wordgame' component={WordGame}/>
                     <Route path='/games/numgame' component={NumGame}/>
-                    {/* <Route path='/games/reactiongame' component={ReactionGame}/> */}
                     <Route path='/games/reactiongame' component={ReactionClick}/>
                 </Switch>
                 </main>

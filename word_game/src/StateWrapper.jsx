@@ -5,41 +5,24 @@ import App from './App.js';
 
 
 const StateWrapper = () => {
-  const initialState={
+  const initialState = {
     loggedIn: false,
+    guestUser: false,
     user: {
-      
+
     }
   }
 
-  /* const refreshUnload=(data)=>{
-    window.removeEventListener('beforeunload', function setLocalStorage(event){
-      event.preventDefault();
-      localStorage.setItem('monkeyGameSession',JSON.stringify(data));
-    });
-    if(data){
-      beforeUnload=window.addEventListener('beforeunload',function setLocalStorage(event){
-        event.preventDefault();
-        localStorage.setItem('monkeyGameSession',JSON.stringify(data));
-      })
-    }else{
-      localStorage.removeItem('monkeyGameSession');
-    }
-  }
 
-  const removeUnload=()=>{
-    console.log(beforeUnload)
-    window.removeEventListener('beforeunload',beforeUnload);
-  } */
 
-  
-  const reducer=(state, action)=>{
-    switch(action.type){
+  const reducer = (state, action) => {
+    switch (action.type) {
       case 'logIn':
         return {
           ...state,
           user: action.payload,
-          loggedIn: true
+          loggedIn: true,
+          guestUser: false
         }
       case 'logOut':
         localStorage.removeItem('monkeyGameSession');
@@ -48,18 +31,25 @@ const StateWrapper = () => {
           user: {},
           loggedIn: false
         }
+      case 'createGuest':
+        return {
+          ...state,
+          user: action.payload,
+          loggedIn: false,
+          guestUser: true
+        }
       case 'setScore':
-        const newState={...state}
-        newState.user.scores[action.target]=action.payload;
+        const newState = { ...state }
+        newState.user.scores[action.target] = action.payload;
         return newState
-      default: 
+      default:
         return state;
     }
   }
 
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
-      <App/>
+      <App />
     </StateProvider>
   )
 }
