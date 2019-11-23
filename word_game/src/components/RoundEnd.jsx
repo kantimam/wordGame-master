@@ -21,7 +21,7 @@ const AfterGame = ({number, numberEntered, lifes, nextRound, saveScore}) => {
             <button 
                 onClick={handleNext} 
                 style={{marginTop: '2rem'}} 
-                className={'roundedButton hoverPush'}>
+                className={'mainButton hoverPush'}>
                   NEXT
             </button>
         </div>

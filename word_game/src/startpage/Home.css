@@ -8,10 +8,20 @@
 }
 .spaceBgFull{
     height: 100%;
-    background-image: url('./space.jpg');
+    /* background-image: url('./space.jpg'); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.logo{
+    max-width: 90%;
+    margin: 0 auto;
+    width: 14rem;
+    margin-bottom: 2rem;
+}
+.logo>img{
+    width: 100%;
 }
 .horizontalGrid{
     display: grid;
@@ -30,30 +40,7 @@
     font-size: 2rem;
     margin: 0;
 }
-.linkButton{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    width: 10rem;
-    height: 2.8rem;
-    margin: 0 auto;
-    /* background-color: rgba(100,100,100,0.4);
-    border: 0.1rem solid black; */
 
-    background-color: violet;
-    color: black;
-}
-.linkButton>p{
-    margin: 0 auto;
-    font-size: 1.2rem;
-}
-.linkButton:hover{
-    background-color: black;
-    color: white !important;
-    font-weight: bold;
-
-}
 #enterButton{
     margin-top: 2rem !important;
     text-decoration: none;

@@ -123,8 +123,8 @@ export default class componentName extends Component {
             className={'roundedButton hoverPush'}>NEW WORD!
           </button> */}
           <div id='gameButtonContainer'>
-            <button onClick={this.seenNew} value={1} className={'roundedButton hoverPush'}>NEW</button>
-            <button onClick={this.seenNew} value={0}  className={'roundedButton hoverPush'}>SEEN</button>
+            <button onClick={this.seenNew} value={1} className={'mainButton hoverPush'}>NEW</button>
+            <button onClick={this.seenNew} value={0}  className={'mainButton hoverPush'}>SEEN</button>
           </div>
           </div>}
         </div>

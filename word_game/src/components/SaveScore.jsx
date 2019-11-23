@@ -59,7 +59,7 @@ const SaveScore = ({ gameName, gameScore, unit, currentPath, restart }) => {
                     <h1 className={'fadeIn saveScoreAnim1'}>{'score: ' + gameScore}{unit}</h1>
                     <h1 style={{ marginBottom: "1.4rem" }} className={'fadeIn saveScoreAnim2'}>your current high score: {stateGameScore}{unit}</h1>
                     {scoreImproved() &&
-                        <button className={'fadeIn saveScoreAnim3 roundedButton hoverPush'} onClick={loggedIn ? sendScore : setGuestScore}>
+                        <button className={'fadeIn saveScoreAnim3 mainButton hoverPush'} onClick={loggedIn ? sendScore : setGuestScore}>
                             SEND
                         </button>}
                 </> :
@@ -70,7 +70,7 @@ const SaveScore = ({ gameName, gameScore, unit, currentPath, restart }) => {
 
 
             }
-            <button onClick={restart} style={{ marginTop: '2rem' }} className={'roundedButton hoverPush fadeIn saveScoreAnim4'}>
+            <button onClick={restart} style={{ marginTop: '2rem' }} className={'mainButton hoverPush fadeIn saveScoreAnim4'}>
                 TRY AGAIN
             </button>
             {!loggedIn && <LogInLink currentPath={currentPath} />}

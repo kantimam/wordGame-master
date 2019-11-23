@@ -151,6 +151,44 @@ h2, h3{
 }
 
 
+.linkButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 10rem;
+  height: 2.8rem;
+  margin: 0 auto;
+  /* background-color: rgba(100,100,100,0.4);
+  border: 0.1rem solid black; */
+
+  background-color: violet;
+  color: black;
+}
+
+
+
+.mainButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  font-size: 1.2rem;
+  border: 0.1rem solid white;
+  width: 12rem;
+  height: 3rem;
+  z-index: 2;
+}
+
+.mainButton:hover {
+  background-color: rgba(255, 255, 255, 1) !important;
+  font-weight: bold;
+  color: purple !important;
+}
+
 
 /* Route undef component */
 #routeUndef{

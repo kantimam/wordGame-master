@@ -2,13 +2,12 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import CenteredIcon from '../CenteredIcon';
 import './Home.css'
-import WelcomeBanner from './WelcomeBanner';
 
 
-const Home = () => {
+const Home = ({children}) => {
   return (
     <div className={'spaceBgFull- horizontalGrid- fullPageContainer'}>
-      <WelcomeBanner/>
+      {children}
       <div id='GameOverview' className={'fullContainer maxWidth60'}>
         <div className={'fourPartGrid'}>
           <Link className={'boxLink undecoratedLink'} to='./games/wordgame'>

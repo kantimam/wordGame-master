@@ -8,9 +8,9 @@ const Navigation = () => {
   return (
     <nav className={'topNav'}>
       <ul className={'navList'}>
-          <Link className={'somePadding undecoratedLink'} to='/'>GAMES</Link>
-          <Link className={'somePadding undecoratedLink'} to='/'>ABOUT</Link>
-          <Link className={'somePadding undecoratedLink'} to='/'>CONTACT</Link>
+          <Link className={'somePadding undecoratedLink'} to='/'>HOME</Link>
+          <Link className={'somePadding undecoratedLink'} to='/dashboard'>DASHBOARD</Link>
+          {/* <Link className={'somePadding undecoratedLink'} to='/'>CONTACT</Link> */}
           <UserInfo/>
       </ul>
     </nav>

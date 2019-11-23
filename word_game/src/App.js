@@ -8,10 +8,9 @@ import Navigation from './startpage/Navigation.js'
 import ConfirmComp from './components/ConfirmComp.js'
 import FloatingContainer from './startpage/floatingContainer.jsx';
 import LogSign from './logSignForm/LogSignForm';
-import RouteUndef from './components/RouteUndef.js'
 import { useStateValue } from './context/AppContextHook';
 import MainScreen from './mainScreen/MainScreen.js'
-
+import WelcomeBanner from './startpage/WelcomeBanner';
 
 
 
@@ -78,9 +77,9 @@ const App = () => {
       <Switch>
         <Route path='/user:id' component={User} />
         <Route path='/games' component={Games} />
-        <Route path='/main' render={() => <MainScreen />} />
-        <Route path='/' component={Home} />
-        <Route component={RouteUndef} />
+        <Route path='/dashboard' render={() => <MainScreen />} />
+        <Route path='/welcome' render={()=><Home><WelcomeBanner/></Home>} />
+        <Route path='/' render={()=><Home><WelcomeBanner/></Home>} />
       </Switch>
     </div>
   )

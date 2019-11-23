@@ -15,7 +15,7 @@ const TopScore = ({ gameName, score, percent }) => {
                 <p>{gamesData[gameName].unit}</p>
                 <p>Top <strong>{percent || "? "}%</strong></p>
             </div>
-            <Link className="linkButton undecoratedLink">
+            <Link className="mainButton undecoratedLink">
                 PLAY
             </Link>
         </div>

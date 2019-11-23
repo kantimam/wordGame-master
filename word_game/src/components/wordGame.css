@@ -19,17 +19,7 @@ h1 {
     margin: 0 auto;
 }
 
-.roundedButton {
-    outline: none;
-    background-color: rgba(0, 0, 0, 0.1);
-    color: white;
-    font-size: 1.2rem;
-    border: 0.1rem solid white;
-    /* width: 46%; */
-    min-width: 12rem;
-    height: 3rem;
-    z-index: 2;
-}
+
 
 .hoverPush:hover {
     background-color: rgba(255, 255, 255, 1) !important;

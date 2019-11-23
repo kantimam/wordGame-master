@@ -9,14 +9,14 @@ import './games.css'
 const Games = () => {
     return (
         <div className={'gamesContainer'}>
-                <main>
+            <main>
                 <Switch>
                     <Route path='/games/wordgame' component={WordGame}/>
                     <Route path='/games/numgame' component={NumGame}/>
                     <Route path='/games/reactiongame' component={ReactionClick}/>
                 </Switch>
-                </main>
-            </div>
+            </main>
+        </div>
     )
 }
 
