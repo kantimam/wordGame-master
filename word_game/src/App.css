@@ -202,6 +202,29 @@ h2, h3{
   border-radius: 1rem;
 }
 
+
+
+
+
+@media (min-width: 480px) and (max-width: 770px) {
+  .fourPartGrid{
+    margin: 0 auto;
+    padding: 0;
+    width:80%;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 1fr 1fr !important;
+    border-radius: 0;
+  }
+ #GameOverview{
+   margin:0 !important;
+   padding:0 !important;
+ }
+ .fullContainer{
+  min-height: 0 !important;
+ }
+ 
+}
+
 @media (max-width: 480px) {
   .fourPartGrid{
     margin: 0;
@@ -221,9 +244,65 @@ h2, h3{
  
 }
 
-
 .maxWidth60{
   margin: 0 auto;
   max-width: 60rem;
 }
 
+
+h1, h3, p{
+  margin: 0;
+  padding: 0;
+}
+
+.mainScreein>h1{
+  margin: 0;
+  padding: 0;
+  font-size: 3rem;
+}
+.card{
+  border-radius: 0.8rem;
+  background-color: lightgrey;
+  
+}
+.userStatsWrapper{
+  margin: 0 auto;
+  max-width: 94%;
+}
+
+.statsView{
+  margin: 0 auto;
+}
+
+.welcomeUser{
+  padding-top: 2.8rem;
+  min-height: 14rem;
+}
+
+.topScore{
+  padding: 3rem 0;
+  background-color: rgba(147, 6, 212, 0.699);
+}
+
+.topScore>.mainButton{
+  margin-top: 1rem;
+  
+}
+
+
+.statsHeader{
+  margin: 0.2rem 0 0 0;
+}
+
+
+.statsWrapperOuter{
+  width: 100%;
+}
+
+.statsWrapperInner{
+  transform: translateX(-1.5rem);
+}
+
+#dashboardChart{
+  margin-top: 3rem;
+}

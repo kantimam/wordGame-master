@@ -43,6 +43,7 @@ const SaveScore = ({ gameName, gameScore, unit, currentPath, restart }) => {
 
     const scoreImproved = () => {
         if(user){
+            console.log(user)
             if (user.scores[gameName]) {
                 if (gameName === "reaction") return (user.scores[gameName] > gameScore)
                 return (user.scores[gameName] < gameScore)

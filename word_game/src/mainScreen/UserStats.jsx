@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import TopScore from './TopScore.jsx';
-import StatsChart from './statsChartWrapper.jsx';
+import StatsChart from '../components/statsChartWrapper.jsx';
 import axios from 'axios'
 const BASEURL = process.env.REACT_APP_BE_URL;
 

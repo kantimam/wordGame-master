@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect, useRef } from 'react'
-import StatsChart from '../components/statsChart.jsx';
+import StatsChart from './statsChart.jsx';
 
 const statsChartWrapper = ({ scores }) => {
     const [chartWidth, setChartWidth] = useState(null);
@@ -16,7 +16,7 @@ const statsChartWrapper = ({ scores }) => {
 
 
     return (
-        <div ref={containerRef} className={"statsWrapperOuter"}>
+        <div ref={containerRef} id="dashboardChart"  className={"statsWrapperOuter"}>
             <div className={"statsWrapperInner"}>
                 {chartWidth && <StatsChart data={scores} width={chartWidth} />}
             </div>

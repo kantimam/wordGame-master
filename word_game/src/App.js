@@ -20,11 +20,11 @@ const App = () => {
   useEffect(() => {
     // check if we have userdata in local storage if so recover state from it
     const storedUser = localStorage.getItem('monkeyGameSession');
-    if (storedUser) {
+    if (storedUser && storedUser!=="{}") {
       dispatch({ type: 'logIn', payload: JSON.parse(storedUser) })
     } else {
       const guestUser=localStorage.getItem('monkeyGameGuestSession');
-      if(guestUser) dispatch({ type: 'createGuest', payload: JSON.parse(guestUser) })
+      if(guestUser && guestUser!=="{}") dispatch({ type: 'createGuest', payload: JSON.parse(guestUser) })
       else dispatch({
         type: 'createGuest', payload: {
           type: "guest", name: "Guest", email: null, scores: {

@@ -27,10 +27,14 @@ h1 {
 }
 
 #gameButtonContainer {
-    width: 50%;
+    width: 90%;
     margin: 0 auto;
+    max-width: 32rem;
     display: flex;
     justify-content: space-between;
+}
+#gameButtonContainer>.mainButton{
+    max-width: 45%;
 }
 
 .fullWidthFlex {

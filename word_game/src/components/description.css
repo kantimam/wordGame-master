@@ -6,13 +6,12 @@
     flex-wrap: wrap;
 }
 #descStatsSection{
-    margin-right: 4rem;
-    max-width: 90%;
-    /* overflow-x: hidden; */
+    max-width: 100%;
+    width: 32rem;
 }
-#descStatsSection>.recharts-wrapper{
+/* #descStatsSection>.recharts-wrapper{
     transform: translateX(-3rem);
-}
+} */
 
 #descStatsSection>h1{
     text-align: left;
@@ -22,6 +21,7 @@
     text-align: right;
     width: 16rem;
     max-width: 90%;
+    padding-bottom: 4rem;
 }
 #descInfoSection>h1{
     text-align: right;

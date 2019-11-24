@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './description.css'
 import axios from 'axios'
-import StatsChart from './statsChart.jsx';
+import StatsChartWrapper from './statsChartWrapper';
 const BASEURL=process.env.REACT_APP_BE_URL;
 
 const Description = ({header, text, gameName}) => {
@@ -22,7 +22,7 @@ const Description = ({header, text, gameName}) => {
         <div id='descriptionBox' className={'inner margin0Auto'}>
             <section id='descStatsSection'>
                 <h1>STATS</h1>
-                <StatsChart data={scores}/>
+                <StatsChartWrapper scores={scores}/>
             </section>
             <section id='descInfoSection'>
                 <h1>
