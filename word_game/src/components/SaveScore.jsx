@@ -27,7 +27,6 @@ const SaveScore = ({ gameName, gameScore, unit, currentPath, restart }) => {
             }).catch((error) => {
                 setSendState(1);
             })
-            console.log(sendState)
         } else console.log("your current score is higher")
 
     }

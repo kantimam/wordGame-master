@@ -12,7 +12,7 @@ const Games = () => {
             <main>
                 <Switch>
                     <Route path='/games/wordgame' component={WordGame}/>
-                    <Route path='/games/numgame' component={NumGame}/>
+                    <Route path='/games/numbergame' component={NumGame}/>
                     <Route path='/games/reactiongame' component={ReactionClick}/>
                 </Switch>
             </main>

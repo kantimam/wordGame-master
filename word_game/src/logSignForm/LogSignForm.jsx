@@ -115,7 +115,6 @@ const LogSignForm=({close})=> {
     const formData=new FormData();
       formData.set('email',logForm.email)
       axios.post(`${BASEURL}/resetpassword`,formData, {withCredentials: true}).then(res=>{
-        console.log(res.data);
         setConfirm({message: "succesfully sent"})
         setTimeout(()=>setConfirm({message: ""}),10000);
       }).catch((error)=>{

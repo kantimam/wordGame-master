@@ -79,7 +79,6 @@ export default class componentName extends Component {
       if(!this.seenWords.includes(this.state.currentWord)){
         this.seenWords.push(this.state.currentWord)
       }
-      console.log(this.seenWords)   
       this.newWord(Math.round(Math.random()))  
       
       
@@ -95,11 +94,6 @@ export default class componentName extends Component {
     }
     
   render() {
-/*     console.log('the current word is: '+this.state.currentWord)
-    console.log('the mode is: '+this.currentMode)
-    console.log(this.seenWords)
-    console.log(this.state.currentWord+' was alrdy seen '+this.seenWords.includes(this.state.currentWord))
-     */
     return (
         <>
           <div id="wordGameContainer" className={'fullContainer inner gradientBackground noUserSelect flexColumnCenter'}>

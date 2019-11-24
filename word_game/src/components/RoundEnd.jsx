@@ -2,7 +2,6 @@ import React from 'react'
 import './saveScore.css'
 
 const AfterGame = ({number, numberEntered, lifes, nextRound, saveScore}) => {
-    console.log(numberEntered)
     const handleNext=()=>{
         if(lifes){
             return nextRound()

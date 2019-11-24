@@ -108,7 +108,7 @@
     100% { transform: translate(2px, 0); }
   }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
     .logSignContainer{
         width: 100%;
     }

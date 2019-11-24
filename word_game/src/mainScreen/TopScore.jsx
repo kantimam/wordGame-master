@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom'
 
 const TopScore = ({ gameName, score, percent }) => {
     const gamesData = {
-        word: { name: "Word Memory", unit: "words" },
-        number: { name: "number memory", unit: "digits" },
-        reaction: { name: "Reaction Time", unit: "ms" }
+        word: { name: "Word Memory", unit: "words", path: "wordgame" },
+        number: { name: "number memory", unit: "digits", path: "reactiongame" },
+        reaction: { name: "Reaction Time", unit: "ms", path: "numbergame" }
     }
     return (
         <div className={"topScore textCenter card"}>
@@ -15,7 +15,7 @@ const TopScore = ({ gameName, score, percent }) => {
                 <p>{gamesData[gameName].unit}</p>
                 <p>Top <strong>{percent || "? "}%</strong></p>
             </div>
-            <Link className="mainButton undecoratedLink">
+            <Link className="mainButton undecoratedLink" to={`/games/${gamesData[gameName].path}`}>
                 PLAY
             </Link>
         </div>

@@ -20,7 +20,6 @@ export default class ProgressBar extends Component {
   componentWillUnmount(){
     this._isMounted=false;
     clearInterval(this.progressInterval)
-    console.log(Date.now()-this.startTime);
   }
 
   updateProgress=()=>{

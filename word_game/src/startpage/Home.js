@@ -6,7 +6,7 @@ import './Home.css'
 
 const Home = ({children}) => {
   return (
-    <div className={'spaceBgFull- horizontalGrid- fullPageContainer'}>
+    <div className={'fullPageContainer gradientBackground'}>
       {children}
       <div id='GameOverview' className={'fullContainer maxWidth60'}>
         <div className={'fourPartGrid'}>
@@ -16,7 +16,7 @@ const Home = ({children}) => {
           <Link className={'boxLink undecoratedLink'} to='./games/reactiongame'>
             <CenteredIcon hover={true} iconSrc={"fas fa-language"} descText={'CLICK FAST'}/>
           </Link>
-          <Link className={'boxLink undecoratedLink'} to='./games/numGame'>
+          <Link className={'boxLink undecoratedLink'} to='./games/numbergame'>
             <CenteredIcon hover={true} iconSrc={"fas fa-sort-numeric-up"} descText={'NUMBER GAME'}/>
           </Link>
           <Link className={'boxLink undecoratedLink'} to='./games/wordgame'><p>COMING SOON</p></Link>

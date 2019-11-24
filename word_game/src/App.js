@@ -23,7 +23,9 @@ const App = () => {
     if (storedUser) {
       dispatch({ type: 'logIn', payload: JSON.parse(storedUser) })
     } else {
-      dispatch({
+      const guestUser=localStorage.getItem('monkeyGameGuestSession');
+      if(guestUser) dispatch({ type: 'createGuest', payload: JSON.parse(guestUser) })
+      else dispatch({
         type: 'createGuest', payload: {
           type: "guest", name: "Guest", email: null, scores: {
             word: 0,
@@ -37,10 +39,13 @@ const App = () => {
 
   const stateLocalStore = (event) => {
     event.preventDefault();
-    if (loggedIn && user && user.email) {
-      console.log(user, loggedIn)
-      localStorage.setItem('monkeyGameSession', JSON.stringify(user));
+    if(user){
+      if (loggedIn && user.email) {
+        localStorage.setItem('monkeyGameSession', JSON.stringify(user));
+      }
+      else localStorage.setItem('monkeyGameGuestSession', JSON.stringify(user));
     }
+    
   }
 
   useEffect(() => {
@@ -57,7 +62,7 @@ const App = () => {
   }
 
   return (
-    <div className="App" /* onClick={()=>console.log(user)} */>
+    <div className="App">
       <Route component={Navigation} />
       {false &&
         <ConfirmComp

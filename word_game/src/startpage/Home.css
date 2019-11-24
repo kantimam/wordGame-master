@@ -46,11 +46,15 @@
     text-decoration: none;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
     .mainScreen>div{
         width: 100%;
         margin: 0 auto;
-        display: grid;
-        grid-template-columns: none;
+        
     }
+
+    #welcomeBanner{
+        min-height: calc(100vh - 3rem);
+    }
+    
   }
