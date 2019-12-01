@@ -4,11 +4,11 @@ import User from '../loggedIn/User.js';
 
 
 
-const MainScreen = ({loggedIn}) => {
+const MainScreen = ({loggedIn, user}) => {
   return (
     <div className={'maxWidth60 mainScreen'}>
       {loggedIn?
-        <User/>:
+        <User user={user}/>:
         <GuestScreen/>
       }
     </div>

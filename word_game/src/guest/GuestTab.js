@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import UserStats from '../mainScreen/UserStats.jsx';
 
 
 const GuestTab = () => {
     return (
         <div id="guestStatsView" className="statsView">
-            <div className={"welcomeUser centerAll"}>
+            <div className={"welcomeUser centerAll textUpper"}>
                 <h2>WELCOME GUEST</h2>
             </div>
             <UserStats loggedIn={false}/>

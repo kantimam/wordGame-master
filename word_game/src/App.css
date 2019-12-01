@@ -82,6 +82,9 @@ h2, h3{
   margin: 0;
 }
 
+.textUpper{
+  text-transform: uppercase;
+}
 /* END BASE CLASSES */
 
 
@@ -181,6 +184,7 @@ h2, h3{
   width: 12rem;
   height: 3rem;
   z-index: 2;
+  cursor: pointer;
 }
 
 .mainButton:hover {
@@ -278,6 +282,7 @@ h1, h3, p{
   padding-top: 2.8rem;
   min-height: 14rem;
 }
+
 
 .topScore{
   padding: 3rem 0;

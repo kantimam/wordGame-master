@@ -38,6 +38,7 @@ const App = () => {
   }, [])
 
   const stateLocalStore = (event) => {
+    /* save user data to local storage */
     event.preventDefault();
     if(user){
       if (loggedIn && user.email) {
@@ -82,7 +83,7 @@ const App = () => {
       <Switch>
         <Route path='/user:id' component={User} />
         <Route path='/games' component={Games} />
-        <Route path='/dashboard' render={() => <MainScreen />} />
+        <Route path='/dashboard' render={() => <MainScreen loggedIn={loggedIn} user={user}/>} />
         <Route path='/welcome' render={()=><Home><WelcomeBanner/></Home>} />
         <Route path='/' render={()=><Home><WelcomeBanner/></Home>} />
       </Switch>

@@ -1,18 +1,16 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import UserStats from '../mainScreen/UserStats.jsx';
 
 
 
 
-const User = () => {
-  useEffect(() => {
-    
-    return () => {
-        
-    };
-  }, [])
+const User = ({user}) => {
   return (
     <div id="guestStatsView" className="statsView">
-      <h2>WELCOME USER</h2>
+      <div className={"welcomeUser centerAll textUpper"}>
+        <h2>WELCOME {user.name}</h2>
+      </div>
+      <UserStats user={user}/>
     </div>
   )
 }

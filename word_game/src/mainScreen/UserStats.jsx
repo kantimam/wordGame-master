@@ -5,14 +5,14 @@ import axios from 'axios'
 const BASEURL = process.env.REACT_APP_BE_URL;
 
 
-const UserStats = ({loggedIn}) => {
+const UserStats = ({user}) => {
     const [selectedGame, setGame]=useState("word")
     const [scores, setScores]=useState([])
     const [currentScore, setCurrent]=useState({score: 0, percent: 0})
     useEffect(() => {
-        axios.get(`${BASEURL}/getstats/${selectedGame}`).then(res => {
+        axios.get(`${BASEURL}/getstats/${selectedGame}`, {withCredentials: true}).then(res => {
             let scoreArr = []
-            const score=16;
+            const score=user && user.scores[selectedGame]? user.scores[selectedGame] : 0;
             const scorePercent=score? res.data[score] : null; 
             setCurrent({score: score, percent:  scorePercent})
             for (let key in res.data) {
@@ -22,7 +22,7 @@ const UserStats = ({loggedIn}) => {
                 })
             }
             setScores(scoreArr)
-        })
+        }).catch((error)=>console.log("looks like the server is offline"))
     }, [selectedGame])
 
 
