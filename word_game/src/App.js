@@ -71,7 +71,7 @@ const App = () => {
           close={"()=>this.setState({confirmOpen: false})"}
         />
       }
-      <Route path='*/account' render={({ history }) =>
+      <Route path='*/account' render={({ history, match }) =>
         <FloatingContainer close={() => closeLogIn(history)}>
           <LogSign
             history={history}
