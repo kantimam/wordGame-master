@@ -3,9 +3,8 @@ import {useRouteMatch} from 'react-router-dom'
 
 const newPasswordForm = ({onSubmit, onChange}) => {
     const {params}=useRouteMatch()
-    console.log(params)
     const newPassword=(event)=>{
-        event.prevenDefault();
+        event.preventDefault();
         onSubmit(params.key, params.email)
     }
     return (

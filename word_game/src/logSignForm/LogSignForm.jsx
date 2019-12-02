@@ -7,11 +7,11 @@ import SignUpForm from './signUpForm.jsx';
 import ConfirmMailForm from './confirmMailForm.jsx';
 import ResetPasswordForm from './resetPasswordForm.jsx';
 import NewPasswordForm from './newPasswordForm.jsx';
-import { Route, Switch, useRouteMatch } from 'react-router'
+import { Route, Switch, useHistory } from 'react-router'
 const BASEURL = process.env.REACT_APP_BE_URL;
 
 const LogSignForm = ({ close }) => {
-
+  const {push}=useHistory();
   const [logForm, setLogForm] = useState(
     {
       userName: '',
@@ -24,7 +24,7 @@ const LogSignForm = ({ close }) => {
 
 
   const [confirmMail, setConfirmMail] = useState(false);
-  const [confirm, setConfirm] = useState({ message: `` });
+  const [confirm, setConfirm] = useState({ message: '' });
 
   const [, dispatch] = useStateValue();
 
@@ -124,13 +124,18 @@ const LogSignForm = ({ close }) => {
 
   }
 
-  const sendNewPassword = (id, email) => {
-    if (id && email && logForm.password && logForm.password === logForm.passwordRe) {
+  const sendNewPassword = (key, email) => {
+    console.log(key, email)
+    if (key && email && logForm.password && logForm.password === logForm.passwordRe) {
       const formData = new FormData();
-      formData.set('password', logForm.password)
-      axios.post(`${BASEURL}/createnewpassword`, { withCredentials: true }).then(res => {
-        setConfirm({ message: "succesfully created" })
-        setTimeout(() => setConfirm({ message: "" }), 10000);
+      formData.set('password', logForm.password);
+      formData.set('key', key);
+      formData.set('email', email);
+      axios.post(`${BASEURL}/createnewpassword`, formData).then(res => {
+        /* go to log in and give them a succes message */
+        setConfirm({ message: "SUCCESFULLY CREATED" })
+        setTimeout(() => setConfirm({ message: "" }), 5000);
+        push('login')
       }).catch((error) => {
         setError("failed")
         setTimeout(() => setError(""), 4000);
@@ -149,9 +154,9 @@ const LogSignForm = ({ close }) => {
     <div className={`logSignContainer gradientBackground ${error ? "animationShake" : ""}`}>
       {error && <p className={"errorMessage"}>{error}</p>}
       <Switch>
-        <Route path="*/login" render={() => <LogInForm onSubmit={logIn} onChange={onChange} />} />
+        <Route path="*/login" render={() => <LogInForm onSubmit={logIn} onChange={onChange} confirm={confirm.message}/>} />
         <Route path="*/signup" render={() => <SignUpForm onSubmit={signUp} onChange={onChange} />} />
-        <Route path="*/resetpassword" render={() => <ResetPasswordForm onSubmit={resetPassword} onChange={onChange} confirmStatus={confirm.message} />} />
+        <Route path="*/resetpassword" render={() => <ResetPasswordForm onSubmit={resetPassword} onChange={onChange} confirm={confirm.message} />} />
         <Route path="*/createnewpassword/:key/:email" render={() => <NewPasswordForm onChange={onChange} onSubmit={sendNewPassword} />} />
       </Switch>
     </div>
