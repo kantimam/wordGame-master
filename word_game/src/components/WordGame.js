@@ -6,7 +6,7 @@ import axios from 'axios';
 import SaveScore from './SaveScore';
 import Description from '../components/Description.jsx';
 const BASEURL=process.env.REACT_APP_BASEURL;
-const wordArray=["hello","black","white","nazi","fun","friendship","hell"]
+const wordArray=["friendship","hell"]
 
 
 export default class componentName extends Component {
@@ -79,6 +79,8 @@ export default class componentName extends Component {
       if(!this.seenWords.includes(this.state.currentWord)){
         this.seenWords.push(this.state.currentWord)
       }
+      /* 50 50 chance to get a new word from api or seen word from array
+      TODO maybe play with probability */
       this.newWord(Math.round(Math.random()))  
       
       

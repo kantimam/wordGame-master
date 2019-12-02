@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import UserStats from '../mainScreen/UserStats.jsx';
 
 
@@ -13,4 +13,4 @@ const GuestTab = () => {
     )
 }
 
-export default GuestTab
+export default memo(GuestTab)

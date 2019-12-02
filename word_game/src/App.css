@@ -1,10 +1,11 @@
 
 .topNav{
   height: 2.8rem;
-  z-index: 1;
+  z-index: 3;
   position: fixed;
   top: 0;
   width: 100%;
+  overflow: hidden;
   background-color: rgb(240, 240, 240);
   padding: 0;
   /* background-color: rgba(252, 2, 252, 1); */
@@ -244,6 +245,19 @@ h2, h3{
  }
  .fullContainer{
   min-height: 0 !important;
+ }
+ .topNav{
+   font-weight: bold;
+ }
+ .userInfo>.somePadding{
+   padding-left: 0;
+   padding-right: 0;
+ }
+ .userInfo>p, .userInfo>a{
+  margin: 0 1rem;
+ }
+ #userInfoWelcome{
+   display: none;
  }
  
 }

@@ -27,7 +27,7 @@ const userInfo = () => {
                     <p onClick={logOut} style={{margin: '0 1rem'}}>
                         LOG OUT
                     </p>
-                    welcome {user.name}
+                    <p id="userInfoWelcome">welcome {user.name}</p>
                 </div>:
                 <Link className={'somePadding undecoratedLink'} to={pathname==="/"?"/account/login":`${pathname}/account/login`}>LOG IN</Link>
             }

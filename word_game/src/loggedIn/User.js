@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {memo} from 'react'
 import UserStats from '../mainScreen/UserStats.jsx';
 
 
@@ -15,4 +15,4 @@ const User = ({user}) => {
   )
 }
 
-export default User
+export default memo(User)

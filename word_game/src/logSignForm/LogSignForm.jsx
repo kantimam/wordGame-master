@@ -125,7 +125,6 @@ const LogSignForm = ({ close }) => {
   }
 
   const sendNewPassword = (key, email) => {
-    console.log(key, email)
     if (key && email && logForm.password && logForm.password === logForm.passwordRe) {
       const formData = new FormData();
       formData.set('password', logForm.password);

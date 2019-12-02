@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, memo} from 'react'
 import TopScore from './TopScore.jsx';
 import StatsChart from '../components/statsChartWrapper.jsx';
 import axios from 'axios'
@@ -40,4 +40,4 @@ const UserStats = ({user}) => {
     )
 }
 
-export default UserStats
+export default memo(UserStats)
