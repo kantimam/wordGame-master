@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import './description.css'
 import axios from 'axios'
 import StatsChartWrapper from './statsChartWrapper';
 const BASEURL=process.env.REACT_APP_BE_URL;

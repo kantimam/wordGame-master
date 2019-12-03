@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, memo, useEffect } from 'react'
 import './userTab.css'
 import axios from 'axios'
 import { useStateValue } from '../context/AppContextHook';
@@ -30,6 +30,13 @@ const LogSignForm = ({ close }) => {
 
   const [error, setError] = useState("");
 
+
+  useEffect(() => {
+    dispatch({type: "blockScroll"})
+    return () => {
+      dispatch({type: "unblockScroll"})
+    };
+  }, [])
 
 
   const onChange = (event) => {
@@ -163,4 +170,4 @@ const LogSignForm = ({ close }) => {
 
 }
 
-export default LogSignForm
+export default memo(LogSignForm)

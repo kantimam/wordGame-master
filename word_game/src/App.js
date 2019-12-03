@@ -15,7 +15,7 @@ import WelcomeBanner from './startpage/WelcomeBanner';
 
 
 const App = () => {
-  const [{ user, loggedIn }, dispatch] = useStateValue();
+  const [{ user, loggedIn, overflowHidden }, dispatch] = useStateValue();
 
   useEffect(() => {
     // check if we have userdata in local storage if so recover state from it
@@ -63,7 +63,7 @@ const App = () => {
   }
 
   return (
-    <div className="App">
+    <div className={overflowHidden? "App overflowHidden" : "App"}>
       <Route component={Navigation} />
       {false &&
         <ConfirmComp

@@ -8,6 +8,7 @@ const StateWrapper = () => {
   const initialState = {
     loggedIn: false,
     guestUser: false,
+    overflowHidden: false,
     user: {
 
     }
@@ -42,6 +43,16 @@ const StateWrapper = () => {
         const newState = { ...state }
         newState.user.scores[action.target] = action.payload;
         return newState
+      case 'blockScroll':
+        return {
+          ...state,
+          overflowHidden: true
+        }
+      case 'unblockScroll':
+        return {
+          ...state,
+          overflowHidden: false
+        }
       default:
         return state;
     }
