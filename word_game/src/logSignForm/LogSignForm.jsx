@@ -67,9 +67,9 @@ const LogSignForm = ({ close }) => {
 
   }
 
-  const sendAgain = (event, sendAgainPath) => {
+  const sendAgain = (event, sendAgainKey) => {
     event.preventDefault();
-    axios.get(`${BASEURL}/${sendAgainPath}`).then(res => {
+    axios.get(`${BASEURL}/confirmagain/${sendAgainKey}`).then(res => {
       setConfirm({ ...confirm, sent: "WAS SENT" });
 
       setTimeout(() => {

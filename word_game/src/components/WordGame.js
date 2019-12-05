@@ -5,7 +5,6 @@ import AnimatedDisplay from './AnimatedDisplay.js'
 import axios from 'axios';
 import SaveScore from './SaveScore';
 import Description from '../components/Description.jsx';
-const BASEURL=process.env.REACT_APP_BE_URL;
 const wordArray=["friendship","hell","cat","dog","human","work"]
 
 
@@ -29,7 +28,7 @@ export default class componentName extends Component {
     }
     wordFromAPI=()=>{
       let previousWord=this.state.currentWord;
-      axios.get(`${BASEURL}/randomword`)
+      axios.get(`/randomword`)
         .then(response=>{
         this.setState({
           prevWord: previousWord,

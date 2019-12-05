@@ -10,16 +10,16 @@ const Home = ({children}) => {
       {children}
       <div id='GameOverview' className={'fullContainer maxWidth60'}>
         <div className={'fourPartGrid'}>
-          <Link className={'boxLink undecoratedLink'} to='./games/wordgame'>
+          <Link className={'boxLink undecoratedLink'} to='/games/wordgame'>
             <CenteredIcon hover={true} iconSrc={"fas fa-language"} descText={'WORD GAME'}/>
           </Link>
-          <Link className={'boxLink undecoratedLink'} to='./games/reactiongame'>
+          <Link className={'boxLink undecoratedLink'} to='/games/reactiongame'>
             <CenteredIcon hover={true} iconSrc={"fas fa-language"} descText={'CLICK FAST'}/>
           </Link>
-          <Link className={'boxLink undecoratedLink'} to='./games/numbergame'>
+          <Link className={'boxLink undecoratedLink'} to='/games/numbergame'>
             <CenteredIcon hover={true} iconSrc={"fas fa-sort-numeric-up"} descText={'NUMBER GAME'}/>
           </Link>
-          <Link className={'boxLink undecoratedLink'} to='./games/wordgame'><p>COMING SOON</p></Link>
+          <Link className={'boxLink undecoratedLink'} to='/games/wordgame'><p>COMING SOON</p></Link>
         </div>
       </div>
     </div>
