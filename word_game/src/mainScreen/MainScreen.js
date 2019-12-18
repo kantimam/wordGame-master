@@ -9,7 +9,7 @@ const MainScreen = ({loggedIn, user}) => {
     <div className={'maxWidth60 mainScreen'}>
       {loggedIn?
         <User user={user}/>:
-        <GuestScreen/>
+        <GuestScreen user={user}/>
       }
     </div>
   )
