@@ -57,7 +57,7 @@ const LogSignForm = ({ close }) => {
           throw new Error("server failed to confirm your mail")
         }
         setConfirmMail(res.data.sendAgainPath)
-        setConfirm(res.data.message);
+        setConfirm({message: res.data.message});
       }).catch(error => {
         setError("something went wrong")
         setTimeout(() => setError(""), 4000);
@@ -113,7 +113,7 @@ const LogSignForm = ({ close }) => {
             return alert("server failed to confirm your mail")
           }
           setConfirmMail(error.res.data.sendAgainPath)
-          setConfirm(error.res.data.message);
+          setConfirm({message: error.res.data.message});
         }
         else {
           setError("wrong email or password")
