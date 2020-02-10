@@ -53,8 +53,11 @@ const LogSignForm = ({ close }) => {
       formData.set('password', logForm.password)
 
       axios.post(`${BASEURL}/signup`, formData/* , {withCredentials: true} */).then(res => {
-        setConfirmMail(true)
-        setConfirm(res.data);
+        if(!res.data || !res.data.message || !res.data.sendAgainPath){
+          throw new Error("server failed to confirm your mail")
+        }
+        setConfirmMail(res.data.sendAgainPath)
+        setConfirm(res.data.message);
       }).catch(error => {
         setError("something went wrong")
         setTimeout(() => setError(""), 4000);
@@ -67,9 +70,11 @@ const LogSignForm = ({ close }) => {
 
   }
 
-  const sendAgain = (event, sendAgainKey) => {
+  const sendAgain = (event) => {
     event.preventDefault();
-    axios.get(`${BASEURL}/confirmagain/${sendAgainKey}`).then(res => {
+    if(!confirmMail || !confirm) return alert("looks like the server fucked up! :(")
+
+    axios.get(`${BASEURL}/confirmagain/${confirmMail}`).then(res => {
       setConfirm({ ...confirm, sent: "WAS SENT" });
 
       setTimeout(() => {
@@ -104,8 +109,11 @@ const LogSignForm = ({ close }) => {
         }
       }).catch((error) => {
         if (error.response && error.response.status === 403) {
-          setConfirmMail(true)
-          setConfirm(error.response.data);
+          if(!error.res.data || !error.res.data.message || !error.res.data.sendAgainPath){
+            return alert("server failed to confirm your mail")
+          }
+          setConfirmMail(error.res.data.sendAgainPath)
+          setConfirm(error.res.data.message);
         }
         else {
           setError("wrong email or password")
