@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 const TopScore = ({ gameName, score, percent }) => {
     const gamesData = {
         word: { name: "Word Memory", unit: "words", path: "wordgame" },
-        number: { name: "number memory", unit: "digits", path: "reactiongame" },
+        number: { name: "Number Memory", unit: "digits", path: "reactiongame" },
         reaction: { name: "Reaction Time", unit: "ms", path: "numbergame" }
     }
     return (

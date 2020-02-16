@@ -1,17 +1,21 @@
 import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
-import Games from './gameContainer/Games.js'
+//import Games from './gameContainer/Games.js'
 import Home from './startpage/Home.js'
-import User from './loggedIn/User.js'
+/* import User from './loggedIn/User.js' */
 import Navigation from './startpage/Navigation.js'
-import ConfirmComp from './components/ConfirmComp.js'
+/* import ConfirmComp from './components/ConfirmComp.js' */
 import FloatingContainer from './startpage/floatingContainer.jsx';
-import LogSign from './logSignForm/LogSignForm';
+/* import LogSign from './logSignForm/LogSignForm'; */
 import { useStateValue } from './context/AppContextHook';
-import MainScreen from './mainScreen/MainScreen.js'
+/* import MainScreen from './mainScreen/MainScreen.js' */
 import WelcomeBanner from './startpage/WelcomeBanner';
 
+const Games=React.lazy(()=> import('./gameContainer/Games.js'));
+const MainScreen=React.lazy(()=> import('./mainScreen/MainScreen.js'));
+const User=React.lazy(()=> import('./loggedIn/User.js')); 
+const LogSign=React.lazy(()=> import('./logSignForm/LogSignForm')); 
 
 
 const App = () => {
@@ -65,12 +69,12 @@ const App = () => {
   return (
     <div className={overflowHidden? "App overflowHidden" : "App"}>
       <Route component={Navigation} />
-      {false &&
+      {/* {false &&
         <ConfirmComp
           message={"this.state.message"}
           close={"()=>this.setState({confirmOpen: false})"}
         />
-      }
+      } */}
       <Route path='*/account' render={({ history, match }) =>
         <FloatingContainer close={() => closeLogIn(history)}>
           <LogSign
@@ -79,6 +83,7 @@ const App = () => {
           />
         </FloatingContainer>
       } />
+
 
       <Switch>
         <Route path='/user:id' component={User} />

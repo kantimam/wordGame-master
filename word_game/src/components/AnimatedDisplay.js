@@ -9,10 +9,7 @@ export default class componentName extends Component {
          playAnimation: true
       }
     }
-    /* componentDidUpdate(){
-      setTimeout(()=>this.setState({playAnimation: false}),2000)
-    }
-     */
+
   render() {
     return (
       <div className={'displayContainer'}>
@@ -25,7 +22,7 @@ export default class componentName extends Component {
         <div className={'fullWidthBlock'}>
           {this.props.displayButton&&<div 
             onClick={(event)=>this.props.getNewWord(event, Math.round(Math.random()))} 
-            className={"roundedDiv fadeInAnimation centerText"}>
+            className={"roundedDiv fadeInAnimation flexVertCenter"}>
               <i class="fas fa-plus"></i> 
           </div>}
         </div>

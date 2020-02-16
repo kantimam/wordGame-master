@@ -52,7 +52,7 @@ const SaveScore = ({ gameName, gameScore, unit, currentPath, restart }) => {
 
     const stateGameScore = user.scores && user.scores[gameName] ? user.scores[gameName] : 0;
     return (
-        <div className={'saveScore'}>
+        <div className={'saveScore textCenter'}>
             {!sendState ?
                 <>
                     <h1 className={'fadeIn saveScoreAnim1'}>{'score: ' + gameScore}{unit}</h1>
