@@ -11,6 +11,7 @@ const wordArray=["friendship","hell","cat","dog","human","work"]
 export default class componentName extends Component {
     constructor(props) {
       super(props)
+      this.wordsArray=[];
       this.seenWords=[];
       this.wordHistory=[];
       this.currentMode=1;
@@ -38,13 +39,14 @@ export default class componentName extends Component {
       }).catch(error=>{
         console.log(error)
       })
-      
-
     }
 
+    getBatchOfWords=()=>{
+      /* get a batch of words on mount and filter out words that where already seen */  
+    }
 
     newWord=(/* event,  */mode)=>{
-      let previousWord=this.state.currentWord;
+      const previousWord=this.state.currentWord;
       this.currentMode=mode;
       if(mode===1){
         this.wordFromAPI()       
@@ -56,6 +58,8 @@ export default class componentName extends Component {
       }
     }
     seenNew=(event)=>{
+      /* if answer is 1 (new word) and word is not inside seen words 
+      or answer 0 (seen word) and word is inside seenWords increase score */
       if((1===parseInt(event.target.value)&&
          !this.seenWords.includes(this.state.currentWord))
          || (0===parseInt(event.target.value)&&
@@ -67,6 +71,7 @@ export default class componentName extends Component {
         })
       }
       else{
+        /* else check if game is other once player loses a life */
         this.state.lifes>0?
         this.setState({
           lifes: this.state.lifes-1,

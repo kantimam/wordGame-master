@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 const TopScore = ({ gameName, score, percent }) => {
     const gamesData = {
         word: { name: "Word Memory", unit: "words", path: "wordgame" },
-        number: { name: "Number Memory", unit: "digits", path: "reactiongame" },
-        reaction: { name: "Reaction Time", unit: "ms", path: "numbergame" }
+        number: { name: "Number Memory", unit: "digits", path: "numbergame" },
+        reaction: { name: "Reaction Time", unit: "ms", path: "reactiongame" }
     }
     return (
         <div className={"topScore textCenter card"}>
