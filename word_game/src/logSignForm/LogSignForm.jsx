@@ -2,16 +2,25 @@ import React, { useState, memo, useEffect } from 'react'
 import './userTab.css'
 import axios from 'axios'
 import { useStateValue } from '../context/AppContextHook';
-import LogInForm from './logInForm.jsx';
+import Loading from '../Loading';
+/* import LogInForm from './logInForm.jsx';
 import SignUpForm from './signUpForm.jsx';
 import ConfirmMailForm from './confirmMailForm.jsx';
 import ResetPasswordForm from './resetPasswordForm.jsx';
-import NewPasswordForm from './newPasswordForm.jsx';
+import NewPasswordForm from './newPasswordForm.jsx'; */
 import { Route, Switch, useHistory } from 'react-router'
 const BASEURL = process.env.REACT_APP_BE_URL;
 
+const LogInForm = React.lazy(()=>import('./logInForm.jsx'));
+const SignUpForm = React.lazy(() => import('./signUpForm.jsx'));
+const ConfirmMailForm = React.lazy(() => import('./confirmMailForm.jsx'));
+const ResetPasswordForm = React.lazy(() => import('./resetPasswordForm.jsx'));
+const NewPasswordForm = React.lazy(() => import('./newPasswordForm.jsx'));
+
+
+
 const LogSignForm = ({ close }) => {
-  const {push}=useHistory();
+  const { push } = useHistory();
   const [logForm, setLogForm] = useState(
     {
       userName: '',
@@ -20,8 +29,6 @@ const LogSignForm = ({ close }) => {
       email: ''
     }
   )
-
-
 
   const [confirmMail, setConfirmMail] = useState(false);
   const [confirm, setConfirm] = useState({ message: '' });
@@ -32,9 +39,9 @@ const LogSignForm = ({ close }) => {
 
 
   useEffect(() => {
-    dispatch({type: "blockScroll"})
+    dispatch({ type: "blockScroll" })
     return () => {
-      dispatch({type: "unblockScroll"})
+      dispatch({ type: "unblockScroll" })
     };
   }, [])
 
@@ -53,11 +60,11 @@ const LogSignForm = ({ close }) => {
       formData.set('password', logForm.password)
 
       axios.post(`${BASEURL}/signup`, formData/* , {withCredentials: true} */).then(res => {
-        if(!res.data || !res.data.message || !res.data.sendAgainPath){
+        if (!res.data || !res.data.message || !res.data.sendAgainPath) {
           throw new Error("server failed to confirm your mail")
         }
         setConfirmMail(res.data.sendAgainPath)
-        setConfirm({message: res.data.message});
+        setConfirm({ message: res.data.message });
       }).catch(error => {
         setError("something went wrong")
         setTimeout(() => setError(""), 4000);
@@ -72,7 +79,7 @@ const LogSignForm = ({ close }) => {
 
   const sendAgain = (event) => {
     event.preventDefault();
-    if(!confirmMail || !confirm) return alert("looks like the server fucked up! :(")
+    if (!confirmMail || !confirm) return alert("looks like the server fucked up! :(")
 
     axios.get(`${BASEURL}/confirmagain/${confirmMail}`).then(res => {
       setConfirm({ ...confirm, sent: "WAS SENT" });
@@ -109,11 +116,11 @@ const LogSignForm = ({ close }) => {
         }
       }).catch((error) => {
         if (error.response && error.response.status === 403) {
-          if(!error.res.data || !error.res.data.message || !error.res.data.sendAgainPath){
+          if (!error.res.data || !error.res.data.message || !error.res.data.sendAgainPath) {
             return alert("server failed to confirm your mail")
           }
           setConfirmMail(error.res.data.sendAgainPath)
-          setConfirm({message: error.res.data.message});
+          setConfirm({ message: error.res.data.message });
         }
         else {
           setError("wrong email or password")
@@ -166,13 +173,15 @@ const LogSignForm = ({ close }) => {
 
   return (
     <div className={`logSignContainer gradientBackground ${error ? "animationShake" : ""}`}>
-      {error && <p className={"errorMessage"}>{error}</p>}
-      <Switch>
-        <Route path="*/login" render={() => <LogInForm onSubmit={logIn} onChange={onChange} confirm={confirm.message}/>} />
-        <Route path="*/signup" render={() => <SignUpForm onSubmit={signUp} onChange={onChange} />} />
-        <Route path="*/resetpassword" render={() => <ResetPasswordForm onSubmit={resetPassword} onChange={onChange} confirm={confirm.message} />} />
-        <Route path="*/createnewpassword/:key/:email" render={() => <NewPasswordForm onChange={onChange} onSubmit={sendNewPassword} />} />
-      </Switch>
+      <React.Suspense fallback={<Loading/>}>
+        {error && <p className={"errorMessage"}>{error}</p>}
+        <Switch>
+          <Route path="*/login" render={() => <LogInForm onSubmit={logIn} onChange={onChange} confirm={confirm.message} />} />
+          <Route path="*/signup" render={() => <SignUpForm onSubmit={signUp} onChange={onChange} />} />
+          <Route path="*/resetpassword" render={() => <ResetPasswordForm onSubmit={resetPassword} onChange={onChange} confirm={confirm.message} />} />
+          <Route path="*/createnewpassword/:key/:email" render={() => <NewPasswordForm onChange={onChange} onSubmit={sendNewPassword} />} />
+        </Switch>
+      </React.Suspense>
     </div>
   )
 
