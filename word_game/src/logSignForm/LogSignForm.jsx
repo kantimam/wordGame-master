@@ -11,7 +11,7 @@ import NewPasswordForm from './newPasswordForm.jsx'; */
 import { Route, Switch, useHistory } from 'react-router'
 const BASEURL = process.env.REACT_APP_BE_URL;
 
-const LogInForm = React.lazy(()=>import('./logInForm.jsx'));
+const LogInForm = React.lazy(() => import('./logInForm.jsx'));
 const SignUpForm = React.lazy(() => import('./signUpForm.jsx'));
 const ConfirmMailForm = React.lazy(() => import('./confirmMailForm.jsx'));
 const ResetPasswordForm = React.lazy(() => import('./resetPasswordForm.jsx'));
@@ -167,13 +167,15 @@ const LogSignForm = ({ close }) => {
 
   if (confirmMail) {
     return (
-      <ConfirmMailForm sendAgain={sendAgain} confirm={confirm} />
+      <React.Suspense fallback={<Loading />}>
+        <ConfirmMailForm sendAgain={sendAgain} confirm={confirm} />
+      </React.Suspense>
     )
   }
 
   return (
     <div className={`logSignContainer gradientBackground ${error ? "animationShake" : ""}`}>
-      <React.Suspense fallback={<Loading/>}>
+      <React.Suspense fallback={<Loading />}>
         {error && <p className={"errorMessage"}>{error}</p>}
         <Switch>
           <Route path="*/login" render={() => <LogInForm onSubmit={logIn} onChange={onChange} confirm={confirm.message} />} />
