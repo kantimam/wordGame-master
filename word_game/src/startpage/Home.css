@@ -1,9 +1,10 @@
-#welcomeBanner{
+#welcomeBanner {
     flex: 1;
     /* background-image: linear-gradient(rgb(28, 115, 228),white); */
-    padding-top: 3rem;
+    padding-top: 5rem;
 }
-.spaceBgFull{
+
+.spaceBgFull {
     height: 100%;
     /* background-image: url('./space.jpg'); */
     background-size: cover;
@@ -11,47 +12,52 @@
     background-position: center;
 }
 
-.logo{
+.logo {
     max-width: 90%;
     margin: 0 auto;
     width: 14rem;
     margin-bottom: 2rem;
 }
-.logo>img{
+
+.logo>img {
     width: 100%;
 }
-.horizontalGrid{
+
+.horizontalGrid {
     display: grid;
     grid-template-rows: 1fr 1fr;
 }
-.callToAction{
+
+.callToAction {
     text-align: center;
-    /* color: white; */
-    
+    padding-bottom: 6rem;
+
 }
-.callToAction>h1{
+
+.callToAction>h1 {
     margin: 0.4rem;
-    font-size: 2.8rem;
+    font-size: 2.4rem;
 }
-.callToAction>p{
+
+.callToAction>p {
     font-size: 2rem;
     margin: 0;
 }
 
-#enterButton{
+#enterButton {
     margin-top: 2rem !important;
     text-decoration: none;
 }
 
 @media (max-width: 480px) {
-    .mainScreen>div{
+    .mainScreen>div {
         width: 100%;
         margin: 0 auto;
-        
+
     }
 
-    #welcomeBanner{
+    #welcomeBanner {
         min-height: calc(100vh - 3rem);
     }
-    
-  }
+
+}

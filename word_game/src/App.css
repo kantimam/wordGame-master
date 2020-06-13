@@ -1,64 +1,76 @@
-h2, h3{
+h2,
+h3 {
   padding: 0;
   margin: 0;
 }
 
 /* BASE CLASSES */
-.centerAll{
+.centerAll {
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
 }
-.flexColumnCenter{
+
+.flexColumnCenter {
   /* vertical flex center and avoid some flex side effects */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.margin0Auto{
+
+.margin0Auto {
   margin: 0 auto;
 }
-.marginAuto{
+
+.marginAuto {
   margin: auto;
 }
-.noUserSelect{
+
+.noUserSelect {
   user-select: none;
 }
-.fillContainer{
+
+.fillContainer {
   width: 100%;
   height: 100%;
 }
-.textCenter{
+
+.textCenter {
   text-align: center;
 }
-.textLeft{
+
+.textLeft {
   text-align: left;
 }
-.mainHover:hover{
+
+.mainHover:hover {
   color: blue;
 }
-.pointer{
+
+.pointer {
   cursor: pointer;
 }
-.noMargin{
+
+.noMargin {
   margin: 0;
 }
 
-.textUpper{
+.textUpper {
   text-transform: uppercase;
 }
 
-.overflowHidden{
+.overflowHidden {
   overflow: hidden;
 }
+
 /* END BASE CLASSES */
 
 
 
 
-.topNav{
+.topNav {
   height: 2.8rem;
   z-index: 3;
   position: fixed;
@@ -69,7 +81,8 @@ h2, h3{
   padding: 0;
   /* background-color: rgba(252, 2, 252, 1); */
 }
-.navList{
+
+.navList {
   height: 100%;
   margin: 0 auto;
   display: flex;
@@ -77,21 +90,24 @@ h2, h3{
   max-width: 60rem;
   padding: 0 !important;
 }
-.navList>.somePadding, .userInfo>.somePadding{
+
+.navList>.somePadding,
+.userInfo>.somePadding {
   list-style: none;
   padding: 0.2rem 1rem 0.4rem 1rem;
   cursor: pointer;
 }
 
-.navList>.somePadding:hover,.userInfo>.somePadding:hover{
-  background-color: rgba(200,200,200,0.4)
+.navList>.somePadding:hover,
+.userInfo>.somePadding:hover {
+  background-color: rgba(200, 200, 200, 0.4)
 }
 
-.gamesContainer{
+.gamesContainer {
   padding-top: 2.8rem;
 }
 
-.userInfo{
+.userInfo {
   margin-left: auto;
 }
 
@@ -101,7 +117,7 @@ h2, h3{
   background-size: cover;
 }
 
-.fullPageContainer{
+.fullPageContainer {
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -110,59 +126,65 @@ h2, h3{
 
 
 /* GAME SELECTION */
-.fourPartGrid{
-  width:100%;
+.fourPartGrid {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 0.2rem;
-  /* background-color: rgba(150,150,150,0.6); */
-  /* border-right: 0.1rem solid black; */
-  /* border-left: 0.1rem solid black; */
-  /* border: 0.1rem solid black; */
+  grid-gap: 1rem;
   border-radius: 0.6rem;
 }
 
 
-.boxLink{
-/*   background-color: orange; 
- */  
+.boxLink {
+
   padding: 3rem 0;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  background-color: rgba(200, 200, 200, 0.4);
+  border-radius: 0.4rem;
 }
-.boxLink>p{
+
+.boxLink>p {
   display: block;
   width: 100%;
   text-align: center;
-  
+
 }
 
-.undecoratedLink{
-  text-decoration:none;
+.undecoratedLink {
+  text-decoration: none;
   color: black;
-  
+
 }
-.boxLink>p{
-  margin:0 auto;
-}
-#GameOverview{
-  padding: 3rem 0;
+
+.boxLink>p {
   margin: 0 auto;
 }
-.maxWidth60{
+
+#GameOverview {
+  width: 100%;
+  padding: 3rem 0;
+  margin: 0 auto;
+  max-width: min(60rem, 94%);
+}
+
+.maxWidth60 {
   max-width: 60rem;
 }
-.hoverPushAnimation:hover{
+
+.hoverPushAnimation:hover {
+  transition: 0.2s;
   transform: translateY(-0.2rem) scale(1.1);
-  text-shadow: 0.2rem 0.2rem 0.3rem rgba(100,100,100,0.7);
+  text-shadow: 0.2rem 0.2rem 0.3rem rgba(100, 100, 100, 0.7);
 }
-.inner{
+
+.inner {
   max-width: 60rem;
 }
 
 
-.linkButton{
+.linkButton {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -203,7 +225,7 @@ h2, h3{
 
 
 /* Route undef component */
-#routeUndef{
+#routeUndef {
   padding: 3rem;
   width: 100%;
   max-width: 40rem;
@@ -217,32 +239,35 @@ h2, h3{
 
 /* DESCRIPTION COMP */
 
-#descriptionBox{
+#descriptionBox {
   margin-top: 2rem;
   width: 90%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-#descStatsSection{
+
+#descStatsSection {
   max-width: 100%;
   width: 32rem;
 }
+
 /* #descStatsSection>.recharts-wrapper{
   transform: translateX(-3rem);
 } */
 
-#descStatsSection>h1{
+#descStatsSection>h1 {
   text-align: left;
 }
 
-#descInfoSection{
+#descInfoSection {
   text-align: right;
   /* width: 16rem; */
   max-width: 90%;
   padding-bottom: 4rem;
 }
-#descInfoSection>h1{
+
+#descInfoSection>h1 {
   text-align: right;
 }
 
@@ -254,143 +279,164 @@ h2, h3{
 /* DESCRIPTION COMP END */
 
 @media (min-width: 480px) and (max-width: 770px) {
-  .fourPartGrid{
+  .fourPartGrid {
     margin: 0 auto;
     padding: 0;
-    width:80%;
     grid-template-columns: 1fr 1fr !important;
-    grid-template-rows: 1fr 1fr !important;
+    grid-template-rows: unset;
     border-radius: 0;
   }
- #GameOverview{
-   margin:0 !important;
-   padding:0 !important;
- }
- .fullContainer{
-  min-height: 0 !important;
- }
- #descInfoSection{
-  text-align: left;
-  width: 90%;
-  max-width: 90%;
-}
-#descInfoSection>h1{
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
- 
+
+  #GameOverview {
+    margin: 0 auto !important;
+    padding-bottom: 2rem;
+  }
+
+  .fullContainer {
+    min-height: 0 !important;
+  }
+
+  #descInfoSection {
+    text-align: left;
+    width: 90%;
+    max-width: 90%;
+  }
+
+  #descInfoSection>h1 {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+  }
+
 }
 
 @media (max-width: 480px) {
-  .fourPartGrid{
+  .fourPartGrid {
     margin: 0;
     padding: 0;
-    width:100%;
-    grid-template-columns: none;
-    grid-template-rows: 1fr 1fr 1fr 1fr !important;
+    grid-template-rows: 1fr;
+    grid-template-columns: unset;
     border-radius: 0;
   }
- #GameOverview{
-   margin:0 !important;
-   padding:0 !important;
- }
- .fullContainer{
-  min-height: 0 !important;
- }
- .topNav{
-   font-weight: bold;
- }
- .userInfo>.somePadding{
-   padding-left: 0;
-   padding-right: 0;
- }
- .userInfo>p, .userInfo>a{
-  margin: 0 1rem;
- }
- #userInfoWelcome{
-   display: none;
- }
- #descInfoSection{
-  text-align: left;
-  width: 90%;
-  max-width: 90%;
-}
-#descInfoSection>h1{
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
- 
+
+  .fourPartGrid .hoverPushAnimation:hover {
+    transform: translateY(-0.4rem) scale(1.02);
+
+  }
+
+  #GameOverview {
+    margin: 0 auto !important;
+    padding-bottom: 2rem;
+
+  }
+
+  .fullContainer {
+    min-height: 0 !important;
+  }
+
+  .topNav {
+    font-weight: bold;
+  }
+
+  .userInfo>.somePadding {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .userInfo>p,
+  .userInfo>a {
+    margin: 0 1rem;
+  }
+
+  #userInfoWelcome {
+    display: none;
+  }
+
+  #descInfoSection {
+    text-align: left;
+    width: 90%;
+    max-width: 90%;
+  }
+
+  #descInfoSection>h1 {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+  }
+
 }
 
-.maxWidth60{
+.maxWidth60 {
   margin: 0 auto;
   max-width: 60rem;
 }
 
 
-h1, h3, p{
+h1,
+h3,
+p {
   margin: 0;
   padding: 0;
 }
 
-.mainScreein>h1{
+.mainScreein>h1 {
   margin: 0;
   padding: 0;
   font-size: 3rem;
 }
-.card{
+
+.card {
   border-radius: 0.8rem;
   background-color: lightgrey;
-  
+
 }
-.userStatsWrapper{
+
+.userStatsWrapper {
   margin: 0 auto;
   max-width: 94%;
 }
 
-.statsView{
+.statsView {
   margin: 0 auto;
 }
 
-.welcomeUser{
+.welcomeUser {
   padding-top: 2.8rem;
   min-height: 14rem;
 }
 
 
-.topScore{
+.topScore {
   padding: 3rem 0;
   background-color: rgba(147, 6, 212, 0.699);
 }
 
-.topScore>.mainButton{
+.topScore>.mainButton {
   margin-top: 1rem;
-  
+
 }
 
 
-.statsHeader{
+.statsHeader {
   margin: 0.2rem 0 0 0;
 }
 
 
-.statsWrapperOuter{
+.statsWrapperOuter {
   width: 100%;
 }
 
-.statsWrapperInner{
+.statsWrapperInner {
   transform: translateX(-1.5rem);
 }
 
-#dashboardChart{
+#dashboardChart {
   margin-top: 3rem;
 }
 
 
 
-#loadingScreen{
+#loadingScreen {
   min-width: 16rem;
   min-height: 12rem;
   height: 100%;
@@ -411,7 +457,8 @@ h1, h3, p{
   margin-bottom: 2rem;
 }
 
-.dot1, .dot2 {
+.dot1,
+.dot2 {
   width: 60%;
   height: 60%;
   display: inline-block;
@@ -419,7 +466,7 @@ h1, h3, p{
   top: 0;
   background-color: rgb(231, 231, 231);
   border-radius: 100%;
-  
+
   -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
   animation: sk-bounce 2.0s infinite ease-in-out;
 }
@@ -431,19 +478,40 @@ h1, h3, p{
   animation-delay: -1.0s;
 }
 
-@-webkit-keyframes sk-rotate { 100% { -webkit-transform: rotate(360deg) }}
-@keyframes sk-rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+@-webkit-keyframes sk-rotate {
+  100% {
+    -webkit-transform: rotate(360deg)
+  }
+}
+
+@keyframes sk-rotate {
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg)
+  }
+}
 
 @-webkit-keyframes sk-bounce {
-  0%, 100% { -webkit-transform: scale(0.0) }
-  50% { -webkit-transform: scale(1.0) }
+
+  0%,
+  100% {
+    -webkit-transform: scale(0.0)
+  }
+
+  50% {
+    -webkit-transform: scale(1.0)
+  }
 }
 
 @keyframes sk-bounce {
-  0%, 100% { 
+
+  0%,
+  100% {
     transform: scale(0.0);
     -webkit-transform: scale(0.0);
-  } 50% { 
+  }
+
+  50% {
     transform: scale(1.0);
     -webkit-transform: scale(1.0);
   }
